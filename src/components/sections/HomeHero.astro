@@ -258,7 +258,7 @@ const base = import.meta.env.BASE_URL;
   .dashboard-wrap {
     position: absolute;
     top: 40px;   /* leave room for badges */
-    left: 0;
+    left: 60px;  /* push right so phone doesn't cover key content */
     right: 0;
     /* Gentle tilt for depth */
     transform: perspective(2000px) rotateY(-3deg) rotateX(2deg);
@@ -269,11 +269,11 @@ const base = import.meta.env.BASE_URL;
   /* ── Mobile: SECONDARY — small, floating bottom-left corner ── */
   .mobile-wrap {
     position: absolute;
-    bottom: -30px;
-    left: -40px;
+    bottom: -20px;
+    left: -10px;
     z-index: 20;
-    /* Scale down the phone to ~48% so it's clearly secondary and doesn't cover dashboard */
-    transform: scale(0.48) perspective(800px) rotateY(6deg);
+    /* Scale down the phone to ~42% so it's clearly secondary */
+    transform: scale(0.42) perspective(800px) rotateY(5deg);
     transform-origin: bottom left;
     filter: drop-shadow(0 16px 32px rgba(0,0,0,0.20));
   }
