@@ -1,30 +1,82 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 export interface Props {
   heading?: string;
   subheading?: string;
   ctaText?: string;
   ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
 }
 
 const {
-  heading = 'Bereit, deine Mitarbeiter-Benefits zu revolutionieren?',
-  subheading = 'Starte jetzt mit der führenden Benefits-Plattform für den Mittelstand und überzeuge dich selbst von der einfachsten Art, deinem Team Gutes zu tun.',
+  heading = 'Bereit, mehr Netto für dein Team zu schaffen?',
+  subheading = 'Starte heute. Kein Vertrag, keine Kreditkarte, kein Risiko. Nur 20 Minuten bis zum ersten Benefit.',
   ctaText = 'Kostenlose Demo vereinbaren',
-  ctaHref = '/demo/',
+  ctaHref = `${base}demo/`,
+  secondaryCtaText = 'Preise ansehen',
+  secondaryCtaHref = `${base}preise/`,
 } = Astro.props;
 ---
 
-<section class="bg-[#1A6B4A] py-20">
-  <div class="container mx-auto px-6 max-w-3xl text-center">
-    <h2 class="text-3xl md:text-[40px] font-bold text-white leading-tight mb-4">
+<section class="bg-[#1B1D1E] py-24 section-animate overflow-hidden relative">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#1A6B4A]/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F5A623]/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
+    <!-- Eyebrow -->
+    <div class="inline-flex items-center gap-2 bg-[#1A6B4A]/20 border border-[#1A6B4A]/30 rounded-full px-4 py-2 text-sm text-[#4A9B7A] font-semibold mb-8">
+      <span class="w-2 h-2 rounded-full bg-[#4A9B7A] animate-pulse"></span>
+      Jetzt starten — in 20 Minuten live
+    </div>
+
+    <h2 class="text-3xl md:text-[48px] font-extrabold text-white leading-tight mb-6">
       {heading}
     </h2>
-    <p class="text-white/70 text-lg mb-8 leading-relaxed">
+    <p class="text-white/60 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
       {subheading}
     </p>
-    <a href={ctaHref} class="btn-primary text-base py-4 px-10">
-      {ctaText}
-    </a>
-    <p class="text-white/50 text-sm mt-4">Keine Kreditkarte erforderlich. Kostenlos & unverbindlich.</p>
+
+    <!-- Dual CTA -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+      <a href={ctaHref} class="btn-primary text-base py-4 px-10 w-full sm:w-auto">
+        {ctaText}
+      </a>
+      <a href={secondaryCtaHref} class="border-2 border-white/20 text-white hover:border-white/50 hover:bg-white/5 font-bold py-4 px-10 rounded-lg transition-all duration-200 text-base w-full sm:w-auto">
+        {secondaryCtaText}
+      </a>
+    </div>
+
+    <!-- Risk-reversal signals -->
+    <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-white/40">
+      <div class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-[#4A9B7A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Keine Kreditkarte
+      </div>
+      <div class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-[#4A9B7A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Kein Vertrag
+      </div>
+      <div class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-[#4A9B7A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        DSGVO-konform
+      </div>
+      <div class="flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-[#4A9B7A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Setup in 20 Min.
+      </div>
+    </div>
   </div>
 </section>

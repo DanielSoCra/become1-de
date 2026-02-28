@@ -1,63 +1,115 @@
 ---
 const testimonials = [
   {
-    quote: '"Die Einführung von become.1 war ein voller Erfolg. Unsere Mitarbeiter lieben die einfache App und wir im HR-Team sparen uns dank der Automatisierung mehrere Stunden Verwaltungsaufwand pro Woche."',
-    name: 'Anna Müller',
-    role: 'HR-Managerin',
-    company: 'Optik Hallmann GmbH',
-    initials: 'AM',
+    quote: "Seit become.1 sparen wir im HR-Team über 6 Stunden pro Woche bei der Verwaltung der Lohnzusätze. Die DATEV-Integration läuft vollautomatisch – wir müssen nichts mehr manuell nachbuchen.",
+    name: "Anna Müller",
+    role: "HR-Managerin",
+    company: "Optik Hallmann GmbH",
+    metric: "6 Std./Woche",
+    metricLabel: "HR-Zeitersparnis",
+    initials: "AM",
+    color: "bg-[#1A6B4A]",
   },
   {
-    quote: '"Mit become.1 können wir unseren Mitarbeitern echte Wertschätzung zeigen, die auch auf dem Gehaltszettel ankommt. Das ist ein unschätzbarer Vorteil im Wettbewerb um die besten Talente."',
-    name: 'David Schmidt',
-    role: 'Head of People',
-    company: 'Hypoport SE',
-    initials: 'DS',
+    quote: "Unsere Mitarbeiter haben durch die steuerfreien Benefits im Schnitt 1.200 € mehr Netto pro Jahr. Das ist ein konkreter Vorteil, den wir im Recruiting aktiv kommunizieren – und der wirkt.",
+    name: "David Schmidt",
+    role: "Head of People",
+    company: "Hypoport SE",
+    metric: "Ø +1.200 €/Jahr",
+    metricLabel: "Netto-Vorteil pro Mitarbeiter",
+    initials: "DS",
+    color: "bg-[#2563EB]",
   },
   {
-    quote: '"Als schnell wachsendes Tech-Unternehmen müssen wir attraktiv für Top-Entwickler sein. Die flexiblen und modernen Benefits von become.1 sind ein entscheidender Baustein unserer Employer-Branding-Strategie."',
-    name: 'Julia Becker',
-    role: 'CEO',
-    company: 'TechSolutions GmbH',
-    initials: 'JB',
+    quote: "Wir haben become.1 in 20 Minuten eingerichtet und am gleichen Tag das erste Benefit aktiviert. Die Mitarbeiter-App ist so intuitiv, dass wir keine einzige Support-Anfrage hatten.",
+    name: "Julia Becker",
+    role: "CEO",
+    company: "TechSolutions GmbH",
+    metric: "20 Min. Setup",
+    metricLabel: "Zeit bis zum ersten Benefit",
+    initials: "JB",
+    color: "bg-[#7C3AED]",
   },
 ];
 ---
 
-<section class="bg-[#FAF9F7] py-20">
+<section class="py-24 bg-[#FAF9F7]">
   <div class="container mx-auto px-6 max-w-7xl">
-    <div class="text-center mb-12">
-      <p class="eyebrow">KUNDENSTIMMEN</p>
-      <h2 class="text-3xl md:text-[40px] font-bold text-[#1B1D1E] mt-2 leading-tight">
-        Hör auf die, die es wissen müssen
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <p class="eyebrow">Kundenstimmen</p>
+      <h2 class="text-3xl md:text-[40px] font-extrabold text-[#1B1D1E] mt-2 leading-tight">
+        Echte Ergebnisse. Echte Kunden.
       </h2>
+      <p class="text-[#1B1D1E]/60 max-w-2xl mx-auto mt-4 text-lg">
+        Über 1.000 Unternehmen vertrauen become.1. Hier sind ihre Erfahrungen in Zahlen.
+      </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <!-- Testimonial Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
       {testimonials.map((t) => (
-        <div class="bg-white rounded-2xl p-8 border border-[#F0EDE8] hover:shadow-md transition-shadow duration-200">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-[#F0EDE8] flex flex-col hover:shadow-md transition-shadow duration-300">
           <!-- Stars -->
-          <div class="flex gap-1 mb-4">
+          <div class="flex gap-1 mb-5">
             {[...Array(5)].map(() => (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#F5A623]" viewBox="0 0 20 20" fill="currentColor">
+              <svg class="w-4 h-4 text-[#F5A623]" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             ))}
           </div>
 
-          <p class="text-[#1B1D1E]/80 text-sm leading-relaxed mb-6 italic">{t.quote}</p>
+          <!-- Metric Highlight -->
+          <div class="bg-[#F0EDE8] rounded-xl px-4 py-3 mb-5 flex items-center gap-3">
+            <span class="text-xl font-extrabold text-[#1A6B4A]">{t.metric}</span>
+            <span class="text-xs text-[#1B1D1E]/60 leading-tight">{t.metricLabel}</span>
+          </div>
 
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-[#1A6B4A] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+          <!-- Quote -->
+          <blockquote class="text-[#1B1D1E]/75 text-sm leading-relaxed flex-1 mb-6 italic">
+            "{t.quote}"
+          </blockquote>
+
+          <!-- Author -->
+          <div class="flex items-center gap-3 pt-5 border-t border-[#F0EDE8]">
+            <div class={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center text-white font-bold text-sm shrink-0`}>
               {t.initials}
             </div>
             <div>
-              <p class="font-bold text-sm text-[#1B1D1E]">{t.name}</p>
-              <p class="text-xs text-[#1B1D1E]/50">{t.role}, {t.company}</p>
+              <p class="font-semibold text-[#1B1D1E] text-sm">{t.name}</p>
+              <p class="text-[#1B1D1E]/50 text-xs">{t.role}, {t.company}</p>
             </div>
           </div>
         </div>
       ))}
+    </div>
+
+    <!-- Trust Badges Row -->
+    <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 pt-8 border-t border-[#F0EDE8]">
+      <div class="flex items-center gap-2 text-sm text-[#1B1D1E]/60">
+        <svg class="w-5 h-5 text-[#1A6B4A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        <span>DSGVO-konform</span>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-[#1B1D1E]/60">
+        <svg class="w-5 h-5 text-[#1A6B4A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        <span>ISO 27001 zertifiziert</span>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-[#1B1D1E]/60">
+        <svg class="w-5 h-5 text-[#1A6B4A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span>1.000+ Unternehmen</span>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-[#1B1D1E]/60">
+        <svg class="w-5 h-5 text-[#1A6B4A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.921-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+        </svg>
+        <span>4,9/5 Bewertung</span>
+      </div>
     </div>
   </div>
 </section>

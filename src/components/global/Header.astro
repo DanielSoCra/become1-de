@@ -36,15 +36,15 @@ const navLinks = [
 ];
 ---
 
-<header class="bg-[#FAF9F7]/95 backdrop-blur-sm sticky top-0 z-50 border-b border-[#F0EDE8]">
+<header id="main-header" class="bg-[#FAF9F7]/95 backdrop-blur-sm sticky top-0 z-50 border-b border-[#F0EDE8] transition-shadow duration-300">
   <div class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
     <!-- Logo -->
-    <a href={base} class="text-2xl font-extrabold text-[#1B1D1E] tracking-tight hover:opacity-80 transition-opacity">
+    <a href={base} class="text-2xl font-extrabold text-[#1B1D1E] tracking-tight hover:opacity-80 transition-opacity shrink-0">
       become<span class="text-[#F5A623]">.</span>1
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex items-center space-x-7">
+    <nav class="hidden lg:flex items-center space-x-6">
       {navLinks.map((link) => (
         <div class="relative group">
           <a
@@ -53,7 +53,7 @@ const navLinks = [
           >
             {link.label}
             {link.children && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
               </svg>
             )}
@@ -75,9 +75,9 @@ const navLinks = [
     </nav>
 
     <!-- CTA Buttons -->
-    <div class="hidden lg:flex items-center space-x-4">
-      <a href="https://app.become1.de" class="text-sm font-medium text-[#1B1D1E]/70 hover:text-[#1A6B4A] transition-colors">Login</a>
-      <a href={`${base}demo/`} class="btn-primary text-sm py-2.5 px-5">Kostenlose Demo</a>
+    <div class="hidden lg:flex items-center space-x-3 shrink-0">
+      <a href="https://app.become1.de" class="text-sm font-medium text-[#1B1D1E]/70 hover:text-[#1A6B4A] transition-colors px-3 py-2">Login</a>
+      <a href={`${base}demo/`} class="btn-primary text-sm py-2.5 px-5 whitespace-nowrap">Kostenlose Demo</a>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -130,6 +130,7 @@ const navLinks = [
 </header>
 
 <script>
+  // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const menuIcon = document.getElementById('menu-icon');
@@ -142,4 +143,16 @@ const navLinks = [
     closeIcon?.classList.toggle('hidden', isOpen);
     btn.setAttribute('aria-expanded', String(!isOpen));
   });
+
+  // Scroll-aware shadow
+  const header = document.getElementById('main-header');
+  const onScroll = () => {
+    if (window.scrollY > 20) {
+      header?.classList.add('shadow-md');
+    } else {
+      header?.classList.remove('shadow-md');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 </script>

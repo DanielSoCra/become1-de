@@ -1,0 +1,32 @@
+---
+---
+
+<div id="announcement-bar" class="bg-[#1A6B4A] text-white text-center py-2.5 px-4 text-sm font-medium relative">
+  <span class="mr-2">🎉</span>
+  <span>Neu: BAV-Integration jetzt verfügbar — </span>
+  <a href="/become1-de/benefits/bav/" class="underline font-semibold hover:text-[#F5A623] transition-colors duration-200">Mehr erfahren →</a>
+  <button
+    id="close-announcement"
+    class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors duration-200"
+    aria-label="Schließen"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</div>
+
+<script>
+  const bar = document.getElementById('announcement-bar');
+  const closeBtn = document.getElementById('close-announcement');
+
+  // Check if dismissed
+  if (sessionStorage.getItem('announcement-dismissed')) {
+    bar?.remove();
+  }
+
+  closeBtn?.addEventListener('click', () => {
+    bar?.remove();
+    sessionStorage.setItem('announcement-dismissed', 'true');
+  });
+</script>

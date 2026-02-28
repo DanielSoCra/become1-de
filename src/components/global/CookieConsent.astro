@@ -1,0 +1,69 @@
+---
+---
+
+<!-- DSGVO Cookie Consent Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 bg-[#1B1D1E] text-white shadow-2xl border-t border-white/10 transform translate-y-full transition-transform duration-500 ease-out">
+  <div class="container mx-auto px-6 py-5 max-w-7xl">
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
+      <div class="flex-1">
+        <p class="text-sm font-semibold text-white mb-1">🍪 Wir verwenden Cookies</p>
+        <p class="text-xs text-white/60 leading-relaxed">
+          Wir nutzen Cookies, um dir die bestmögliche Erfahrung auf unserer Website zu bieten. 
+          Einige sind technisch notwendig, andere helfen uns, die Website zu verbessern. 
+          Weitere Informationen findest du in unserer 
+          <a href="/become1-de/datenschutz/" class="text-[#F5A623] hover:underline">Datenschutzerklärung</a>.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+        <button
+          id="cookie-reject"
+          class="px-5 py-2.5 text-sm font-semibold text-white/70 border border-white/20 rounded-lg hover:border-white/40 hover:text-white transition-all duration-200"
+        >
+          Nur notwendige
+        </button>
+        <button
+          id="cookie-accept"
+          class="px-5 py-2.5 text-sm font-semibold bg-[#F5A623] text-[#1B1D1E] rounded-lg hover:bg-[#E09610] transition-all duration-200"
+        >
+          Alle akzeptieren
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const rejectBtn = document.getElementById('cookie-reject');
+
+  function hideBanner() {
+    if (banner) {
+      banner.style.transform = 'translateY(100%)';
+    }
+  }
+
+  function showBanner() {
+    if (banner) {
+      setTimeout(() => {
+        banner.style.transform = 'translateY(0)';
+      }, 1500);
+    }
+  }
+
+  // Check if consent was already given
+  const consent = localStorage.getItem('cookie-consent');
+  if (!consent) {
+    showBanner();
+  }
+
+  acceptBtn?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'all');
+    hideBanner();
+  });
+
+  rejectBtn?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'necessary');
+    hideBanner();
+  });
+</script>
