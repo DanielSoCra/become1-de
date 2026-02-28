@@ -1,204 +1,343 @@
 ---
-// Desktop Admin Dashboard Mockup
-// Strategy: render at 800px wide internally, then scale down via CSS transform
-// This guarantees pixel-perfect proportions with no text overflow
+// DashboardMockup.astro — HR Admin Dashboard, fixed 760px canvas scaled to fit
 ---
 
-<!-- Outer wrapper: defines the actual space taken in the layout -->
-<div class="dashboard-wrapper" style="width:100%;position:relative;overflow:hidden;border-radius:14px;">
-  <!-- Inner canvas: always 800px wide, scaled down to fit -->
-  <div class="dashboard-canvas" style="width:800px;transform-origin:top left;">
+<div class="dashboard-wrapper">
+  <!-- Browser chrome -->
+  <div class="browser-chrome">
+    <div class="browser-dots">
+      <span style="background:#FF5F57"></span>
+      <span style="background:#FEBC2E"></span>
+      <span style="background:#28C840"></span>
+    </div>
+    <div class="browser-url">app.become1.de/dashboard</div>
+  </div>
 
-    <div style="background:#16181A;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);font-family:'Poppins',system-ui,sans-serif;font-size:13px;line-height:1.4;">
-
-      <!-- Window chrome -->
-      <div style="display:flex;align-items:center;gap:6px;padding:10px 16px;background:#1E2022;border-bottom:1px solid rgba(255,255,255,0.07);">
-        <span style="width:12px;height:12px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
-        <span style="width:12px;height:12px;border-radius:50%;background:#FFBD2E;display:inline-block;"></span>
-        <span style="width:12px;height:12px;border-radius:50%;background:#28CA41;display:inline-block;"></span>
-        <div style="flex:1;display:flex;justify-content:center;">
-          <div style="background:#2A2D30;border-radius:6px;padding:3px 12px;display:flex;align-items:center;gap:6px;">
-            <svg width="10" height="10" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-            <span style="color:rgba(255,255,255,0.3);font-size:11px;">app.become1.de/dashboard</span>
+  <!-- App shell -->
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-mark">b1</span>
+        <span class="logo-text">become.1</span>
+      </div>
+      <nav class="sidebar-nav">
+        {[
+          {icon:'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', label:'Dashboard', active:true},
+          {icon:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', label:'Mitarbeiter', active:false},
+          {icon:'M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7', label:'Benefits', active:false},
+          {icon:'M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z', label:'Berichte', active:false},
+          {icon:'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z', label:'Einstellungen', active:false},
+        ].map(item => (
+          <div class={`nav-item ${item.active ? 'active' : ''}`}>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d={item.icon}/>
+            </svg>
+            <span>{item.label}</span>
           </div>
+        ))}
+      </nav>
+      <div class="sidebar-user">
+        <div class="user-avatar">AM</div>
+        <div class="user-info">
+          <div class="user-name">Anna Müller</div>
+          <div class="user-role">HR Admin</div>
         </div>
       </div>
+    </div>
 
-      <!-- App body -->
-      <div style="display:flex;height:480px;">
+    <!-- Main content -->
+    <div class="main-content">
+      <!-- Top bar -->
+      <div class="topbar">
+        <div>
+          <div class="page-title">Dashboard</div>
+          <div class="page-subtitle">Willkommen zurück, Anna 👋</div>
+        </div>
+        <button class="add-btn">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          Benefit hinzufügen
+        </button>
+      </div>
 
-        <!-- Sidebar -->
-        <div style="width:200px;background:#1A1C1E;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;padding:16px 0;flex-shrink:0;">
-          <!-- Logo -->
-          <div style="padding:0 16px 20px;">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:#1A6B4A;display:flex;align-items:center;justify-content:center;">
-                <span style="color:white;font-size:11px;font-weight:800;">b1</span>
+      <!-- KPI grid 2x2 -->
+      <div class="kpi-grid">
+        {[
+          {label:'Aktive Mitarbeiter', value:'127', sub:'+3 diesen Monat', color:'#4A9B7A', icon:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'},
+          {label:'Monatl. Budget', value:'6.350 €', sub:'von 7.000 € genutzt', color:'#F5A623', icon:'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'},
+          {label:'Aktivierungsrate', value:'91 %', sub:'↑ 4% vs. Vormonat', color:'#1A6B4A', icon:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'},
+          {label:'Jahresersparnis', value:'76.200 €', sub:'vs. Gehaltserhöhung', color:'#4A9B7A', icon:'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6'},
+        ].map(kpi => (
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">{kpi.label}</span>
+              <div class="kpi-icon" style={`background:${kpi.color}22`}>
+                <svg width="12" height="12" fill="none" stroke={kpi.color} stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={kpi.icon}/>
+                </svg>
               </div>
-              <span style="color:white;font-size:14px;font-weight:700;">become.1</span>
             </div>
+            <div class="kpi-value">{kpi.value}</div>
+            <div class="kpi-sub" style={`color:${kpi.color}`}>{kpi.sub}</div>
           </div>
+        ))}
+      </div>
 
-          <!-- Nav -->
-          <nav style="display:flex;flex-direction:column;gap:2px;padding:0 8px;flex:1;">
-            <!-- Active item -->
-            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(26,107,74,0.2);">
-              <svg width="16" height="16" fill="none" stroke="#4A9B7A" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-              <span style="color:#4A9B7A;font-size:13px;font-weight:600;">Dashboard</span>
-            </div>
-            <!-- Other items -->
-            {[
-              {d:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', label:'Mitarbeiter'},
-              {d:'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', label:'Benefits'},
-              {d:'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z', label:'Abrechnung'},
-              {d:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', label:'Berichte'},
-              {d:'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z', label:'Einstellungen'},
-            ].map(item => (
-              <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;">
-                <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d={item.d}/></svg>
-                <span style="color:rgba(255,255,255,0.4);font-size:13px;">{item.label}</span>
+      <!-- Bottom row: benefit usage + activity -->
+      <div class="bottom-row">
+        <!-- Benefit usage -->
+        <div class="usage-card">
+          <div class="card-title">Benefit-Nutzung <span class="card-subtitle">Dieser Monat</span></div>
+          {[
+            {name:'Sachbezug', val:'50 €/MA', pct:94, color:'#4A9B7A'},
+            {name:'Essenszuschuss', val:'7,23 €/Tag', pct:87, color:'#4A9B7A'},
+            {name:'Mobilitätsbudget', val:'50 €/MA', pct:62, color:'#F5A623'},
+            {name:'Internetzuschuss', val:'50 €/MA', pct:78, color:'#4A9B7A'},
+            {name:'Firmenfitness', val:'600 €/Jahr', pct:45, color:'#F5A623'},
+          ].map(b => (
+            <div class="usage-row">
+              <div class="usage-meta">
+                <span class="usage-name">{b.name}</span>
+                <span class="usage-val">{b.val}</span>
+                <span class="usage-pct">{b.pct}%</span>
               </div>
-            ))}
-          </nav>
-
-          <!-- User -->
-          <div style="padding:12px 8px 0;border-top:1px solid rgba(255,255,255,0.07);margin-top:8px;">
-            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.05);">
-              <div style="width:28px;height:28px;border-radius:50%;background:#1A6B4A;display:flex;align-items:center;justify-content:center;color:white;font-size:10px;font-weight:700;flex-shrink:0;">AM</div>
-              <div>
-                <div style="color:white;font-size:12px;font-weight:600;">Anna Müller</div>
-                <div style="color:rgba(255,255,255,0.35);font-size:11px;">HR Admin</div>
+              <div class="usage-bar-bg">
+                <div class="usage-bar-fill" style={`width:${b.pct}%;background:${b.color}`}></div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
-        <!-- Main content -->
-        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
-
-          <!-- Top bar -->
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#1A1C1E;border-bottom:1px solid rgba(255,255,255,0.07);">
-            <div>
-              <div style="color:white;font-size:15px;font-weight:700;">Dashboard</div>
-              <div style="color:rgba(255,255,255,0.35);font-size:12px;">Willkommen zurück, Anna 👋</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;">
-              <div style="position:relative;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;">
-                <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-                <span style="position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:#F5A623;border:1px solid #1A1C1E;"></span>
+        <!-- Activity feed -->
+        <div class="activity-card">
+          <div class="card-title">Aktivitäten <span class="live-dot"></span></div>
+          {[
+            {initials:'LK', name:'Lisa K.', action:'Sachbezug aktiviert', time:'vor 2 Min.', color:'#4A9B7A'},
+            {initials:'TM', name:'Tom M.', action:'Essenszuschuss ↑', time:'vor 14 Min.', color:'#F5A623'},
+            {initials:'SR', name:'Sara R.', action:'Onboarding abg.', time:'vor 1 Std.', color:'#1A6B4A'},
+            {initials:'JB', name:'Jan B.', action:'Mobilitätsbudget', time:'vor 2 Std.', color:'#4A9B7A'},
+            {initials:'MH', name:'Mia H.', action:'KiTa-Zuschuss', time:'gestern', color:'#F5A623'},
+          ].map(a => (
+            <div class="activity-row">
+              <div class="activity-avatar" style={`background:${a.color}33;color:${a.color}`}>{a.initials}</div>
+              <div class="activity-info">
+                <div class="activity-name">{a.name}</div>
+                <div class="activity-action">{a.action}</div>
               </div>
-              <div style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;background:#1A6B4A;cursor:pointer;">
-                <svg width="13" height="13" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-                <span style="color:white;font-size:12px;font-weight:600;">Benefit hinzufügen</span>
-              </div>
+              <div class="activity-time">{a.time}</div>
             </div>
-          </div>
-
-          <!-- Scrollable content -->
-          <div style="flex:1;overflow:hidden;padding:16px;display:flex;flex-direction:column;gap:14px;">
-
-            <!-- KPI cards -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
-                {[
-                {label:'Aktive MA', value:'127', sub:'+3 diesen Monat', color:'#4A9B7A', icon:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'},
-                {label:'Budget/Monat', value:'6.350 €', sub:'von 7.000 € genutzt', color:'#F5A623', icon:'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'},
-                {label:'Aktivierung', value:'91 %', sub:'↑ 4% vs. Vormonat', color:'#1A6B4A', icon:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'},
-                {label:'Jahresersparnis', value:'76.200 €', sub:'vs. Gehaltserh.', color:'#4A9B7A', icon:'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6'},
-              ].map(kpi => (
-                <div style="border-radius:10px;padding:12px;background:#1E2022;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
-                  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;gap:4px;">
-                    <span style="color:rgba(255,255,255,0.4);font-size:10px;font-weight:500;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{kpi.label}</span>
-                    <div style={`width:20px;height:20px;border-radius:5px;background:${kpi.color}22;display:flex;align-items:center;justify-content:center;flex-shrink:0;`}>
-                      <svg width="10" height="10" fill="none" stroke={kpi.color} stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d={kpi.icon}/></svg>
-                    </div>
-                  </div>
-                  <div style="color:white;font-size:17px;font-weight:800;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{kpi.value}</div>
-                  <div style={`color:${kpi.color};font-size:10px;font-weight:500;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;`}>{kpi.sub}</div>
-                </div>
-              ))}
-            </div>
-
-            <!-- Bottom row -->
-            <div style="display:flex;gap:14px;flex:1;overflow:hidden;">
-
-              <!-- Benefit usage -->
-              <div style="flex:1;border-radius:10px;padding:16px;background:#1E2022;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-                  <span style="color:white;font-size:13px;font-weight:700;">Benefit-Nutzung</span>
-                  <span style="color:rgba(255,255,255,0.3);font-size:11px;">Dieser Monat</span>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:12px;">
-                  {[
-                    {name:'Sachbezug', pct:94, amount:'50 €/MA', color:'#1A6B4A'},
-                    {name:'Essenszuschuss', pct:87, amount:'7,23 €/Tag', color:'#4A9B7A'},
-                    {name:'Mobilitätsbudget', pct:62, amount:'50 €/MA', color:'#F5A623'},
-                    {name:'Internetzuschuss', pct:78, amount:'50 €/MA', color:'#4A9B7A'},
-                    {name:'Firmenfitness', pct:45, amount:'600 €/Jahr', color:'#F5A623'},
-                  ].map(b => (
-                    <div>
-                      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-                        <span style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:500;">{b.name}</span>
-                        <div style="display:flex;align-items:center;gap:10px;">
-                          <span style="color:rgba(255,255,255,0.3);font-size:11px;">{b.amount}</span>
-                          <span style={`color:${b.color};font-size:12px;font-weight:700;min-width:28px;text-align:right;`}>{b.pct}%</span>
-                        </div>
-                      </div>
-                      <div style="height:6px;border-radius:9999px;background:rgba(255,255,255,0.08);overflow:hidden;">
-                        <div style={`width:${b.pct}%;height:100%;border-radius:9999px;background:${b.color};`}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Activity feed -->
-              <div style="width:190px;flex-shrink:0;border-radius:10px;padding:16px;background:#1E2022;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-                  <span style="color:white;font-size:13px;font-weight:700;">Aktivitäten</span>
-                  <span style="width:7px;height:7px;border-radius:50%;background:#1A6B4A;animation:pulse 2s infinite;"></span>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:12px;">
-                  {[
-                    {av:'LK', name:'Lisa K.', action:'Sachbezug aktiviert', time:'vor 2 Min.', c:'#1A6B4A'},
-                    {av:'TM', name:'Tom M.', action:'Essenszuschuss ↑', time:'vor 14 Min.', c:'#4A9B7A'},
-                    {av:'SR', name:'Sara R.', action:'Onboarding abg.', time:'vor 1 Std.', c:'#F5A623'},
-                    {av:'JB', name:'Jan B.', action:'Mobilitätsbudget', time:'vor 2 Std.', c:'#4A9B7A'},
-                    {av:'MH', name:'Mia H.', action:'KiTa-Zuschuss', time:'gestern', c:'#1A6B4A'},
-                  ].map(a => (
-                    <div style="display:flex;align-items:flex-start;gap:8px;">
-                      <div style={`width:26px;height:26px;border-radius:50%;background:${a.c};display:flex;align-items:center;justify-content:center;color:white;font-size:9px;font-weight:700;flex-shrink:0;`}>{a.av}</div>
-                      <div>
-                        <div style="color:rgba(255,255,255,0.85);font-size:11px;font-weight:600;line-height:1.2;">{a.name}</div>
-                        <div style="color:rgba(255,255,255,0.4);font-size:10px;line-height:1.3;">{a.action}</div>
-                        <div style="color:rgba(255,255,255,0.2);font-size:10px;">{a.time}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-  // Scale the 800px canvas down to fit its container
-  function scaleDashboard() {
-    document.querySelectorAll('.dashboard-wrapper').forEach(wrapper => {
-      const canvas = wrapper.querySelector('.dashboard-canvas');
-      if (!canvas) return;
-      const containerWidth = wrapper.offsetWidth;
-      const scale = containerWidth / 800;
-      canvas.style.transform = `scale(${scale})`;
-      // Set wrapper height to match scaled canvas height
-      const canvasHeight = canvas.offsetHeight || 530;
-      wrapper.style.height = (canvasHeight * scale) + 'px';
-    });
+<style>
+  .dashboard-wrapper {
+    width: 760px;
+    background: #16181A;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+    font-family: 'Poppins', -apple-system, sans-serif;
   }
-  scaleDashboard();
-  window.addEventListener('resize', scaleDashboard);
-</script>
+
+  /* Browser chrome */
+  .browser-chrome {
+    background: #1E2022;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .browser-dots { display: flex; gap: 5px; }
+  .browser-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .browser-url {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+  }
+
+  /* App shell */
+  .app-shell {
+    display: flex;
+    height: 420px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 160px;
+    background: #1A1C1E;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    flex-shrink: 0;
+  }
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+  }
+  .logo-mark {
+    width: 26px; height: 26px;
+    background: #1A6B4A;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 800; color: white;
+  }
+  .logo-text { font-size: 12px; font-weight: 700; color: white; }
+
+  .sidebar-nav { flex: 1; padding: 0 8px; display: flex; flex-direction: column; gap: 2px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 8px;
+    border-radius: 7px;
+    font-size: 11px; font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+  }
+  .nav-item.active { background: rgba(26,107,74,0.2); color: #4A9B7A; }
+
+  .sidebar-user {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 16px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 8px;
+  }
+  .user-avatar {
+    width: 28px; height: 28px;
+    background: #1A6B4A;
+    border-radius: 50%;
+    font-size: 10px; font-weight: 700; color: white;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .user-name { font-size: 11px; font-weight: 600; color: white; }
+  .user-role { font-size: 9px; color: rgba(255,255,255,0.35); }
+
+  /* Main content */
+  .main-content {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+  }
+
+  /* Topbar */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-title { font-size: 15px; font-weight: 700; color: white; }
+  .page-subtitle { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 1px; }
+  .add-btn {
+    display: flex; align-items: center; gap: 5px;
+    background: #1A6B4A;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 12px;
+    font-size: 10px; font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* KPI grid 2x2 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .kpi-card {
+    background: #1E2022;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .kpi-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .kpi-label { font-size: 10px; color: rgba(255,255,255,0.4); font-weight: 500; }
+  .kpi-icon {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .kpi-value { font-size: 20px; font-weight: 800; color: white; line-height: 1; }
+  .kpi-sub { font-size: 10px; font-weight: 500; margin-top: 3px; }
+
+  /* Bottom row */
+  .bottom-row {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+  }
+  .usage-card, .activity-card {
+    background: #1E2022;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .usage-card { flex: 1.2; }
+  .activity-card { flex: 1; }
+
+  .card-title {
+    font-size: 11px; font-weight: 700; color: white;
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 2px;
+  }
+  .card-subtitle { font-size: 10px; color: rgba(255,255,255,0.3); font-weight: 400; }
+  .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #4A9B7A;
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* Usage bars */
+  .usage-row { display: flex; flex-direction: column; gap: 3px; }
+  .usage-meta { display: flex; align-items: center; gap: 4px; }
+  .usage-name { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 500; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .usage-val { font-size: 9px; color: rgba(255,255,255,0.3); white-space: nowrap; }
+  .usage-pct { font-size: 9px; color: rgba(255,255,255,0.5); font-weight: 600; min-width: 26px; text-align: right; }
+  .usage-bar-bg { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+  .usage-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; }
+
+  /* Activity */
+  .activity-row { display: flex; align-items: center; gap: 7px; }
+  .activity-avatar {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    font-size: 9px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .activity-info { flex: 1; min-width: 0; }
+  .activity-name { font-size: 10px; font-weight: 600; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .activity-action { font-size: 9px; color: rgba(255,255,255,0.35); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .activity-time { font-size: 9px; color: rgba(255,255,255,0.25); white-space: nowrap; flex-shrink: 0; }
+</style>
