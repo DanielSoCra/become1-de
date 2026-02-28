@@ -1,0 +1,178 @@
+---
+// Desktop Admin Dashboard Mockup — pure HTML/CSS, no images
+---
+
+<div class="dashboard-mockup w-full rounded-xl overflow-hidden shadow-2xl border border-white/10 font-sans select-none" style="background:#16181A; font-family:'Poppins',sans-serif;">
+
+  <!-- Window chrome -->
+  <div class="flex items-center gap-1.5 px-4 py-3 border-b border-white/8" style="background:#1E2022;">
+    <span class="w-3 h-3 rounded-full" style="background:#FF5F57;"></span>
+    <span class="w-3 h-3 rounded-full" style="background:#FFBD2E;"></span>
+    <span class="w-3 h-3 rounded-full" style="background:#28CA41;"></span>
+    <div class="flex-1 mx-4">
+      <div class="mx-auto w-48 h-5 rounded-md flex items-center justify-center gap-1.5" style="background:#2A2D30;">
+        <svg class="w-3 h-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <span style="font-size:10px;color:rgba(255,255,255,0.35);">app.become1.de/dashboard</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- App shell -->
+  <div class="flex" style="height:420px;">
+
+    <!-- Sidebar -->
+    <div class="flex flex-col py-4 border-r border-white/8" style="width:200px;background:#1A1C1E;flex-shrink:0;">
+      <!-- Logo -->
+      <div class="px-4 mb-6">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background:#1A6B4A;">
+            <span style="color:white;font-size:11px;font-weight:800;">b1</span>
+          </div>
+          <span style="color:white;font-size:13px;font-weight:700;">become.1</span>
+        </div>
+      </div>
+
+      <!-- Nav items -->
+      <nav class="flex flex-col gap-0.5 px-2 flex-1">
+        <!-- Active -->
+        <div class="flex items-center gap-2.5 px-3 py-2 rounded-lg" style="background:rgba(26,107,74,0.25);">
+          <svg class="w-4 h-4" style="color:#1A6B4A;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span style="color:#4A9B7A;font-size:12px;font-weight:600;">Dashboard</span>
+        </div>
+        {[
+          {icon:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', label:'Mitarbeiter'},
+          {icon:'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', label:'Benefits'},
+          {icon:'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z', label:'Abrechnung'},
+          {icon:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', label:'Berichte'},
+          {icon:'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z', label:'Einstellungen'},
+        ].map(item => (
+          <div class="flex items-center gap-2.5 px-3 py-2 rounded-lg cursor-pointer" style="transition:background 0.15s;" onmouseenter="this.style.background='rgba(255,255,255,0.05)'" onmouseleave="this.style.background='transparent'">
+            <svg class="w-4 h-4" style="color:rgba(255,255,255,0.35);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={item.icon}/></svg>
+            <span style="color:rgba(255,255,255,0.45);font-size:12px;">{item.label}</span>
+          </div>
+        ))}
+      </nav>
+
+      <!-- User avatar -->
+      <div class="px-3 pt-3 border-t border-white/8 mt-2">
+        <div class="flex items-center gap-2.5 px-2 py-2 rounded-lg" style="background:rgba(255,255,255,0.05);">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background:#1A6B4A;color:white;">AM</div>
+          <div>
+            <p style="color:white;font-size:11px;font-weight:600;">Anna Müller</p>
+            <p style="color:rgba(255,255,255,0.35);font-size:10px;">HR Admin</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex-1 overflow-hidden flex flex-col" style="background:#16181A;">
+
+      <!-- Top bar -->
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-white/8" style="background:#1A1C1E;">
+        <div>
+          <h1 style="color:white;font-size:14px;font-weight:700;">Dashboard</h1>
+          <p style="color:rgba(255,255,255,0.35);font-size:11px;">Willkommen zurück, Anna 👋</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <!-- Notification bell -->
+          <div class="relative w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer" style="background:rgba(255,255,255,0.06);">
+            <svg class="w-4 h-4" style="color:rgba(255,255,255,0.5);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <span class="absolute top-1 right-1 w-2 h-2 rounded-full" style="background:#F5A623;"></span>
+          </div>
+          <!-- Add button -->
+          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg cursor-pointer" style="background:#1A6B4A;">
+            <svg class="w-3.5 h-3.5" style="color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            <span style="color:white;font-size:11px;font-weight:600;">Benefit hinzufügen</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content area -->
+      <div class="flex-1 overflow-hidden p-4 flex flex-col gap-3">
+
+        <!-- KPI row -->
+        <div class="grid grid-cols-4 gap-3">
+          {[
+            {label:'Aktive Mitarbeiter', value:'127', sub:'+3 diesen Monat', color:'#4A9B7A', icon:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'},
+            {label:'Monatl. Budget', value:'6.350 €', sub:'von 7.000 € genutzt', color:'#F5A623', icon:'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'},
+            {label:'Aktivierungsrate', value:'91 %', sub:'↑ 4% vs. Vormonat', color:'#1A6B4A', icon:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'},
+            {label:'Jahresersparnis', value:'76.200 €', sub:'vs. Gehaltserhöhung', color:'#4A9B7A', icon:'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6'},
+          ].map(kpi => (
+            <div class="rounded-xl p-3.5" style="background:#1E2022;border:1px solid rgba(255,255,255,0.07);">
+              <div class="flex items-start justify-between mb-2">
+                <p style="color:rgba(255,255,255,0.4);font-size:10px;font-weight:500;line-height:1.3;">{kpi.label}</p>
+                <div class="w-6 h-6 rounded-md flex items-center justify-center" style={`background:${kpi.color}22;`}>
+                  <svg class="w-3 h-3" style={`color:${kpi.color};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={kpi.icon}/></svg>
+                </div>
+              </div>
+              <p style="color:white;font-size:18px;font-weight:800;line-height:1;">{kpi.value}</p>
+              <p style={`color:${kpi.color};font-size:9px;font-weight:500;margin-top:3px;`}>{kpi.sub}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Bottom row: benefits + activity -->
+        <div class="flex gap-3 flex-1 overflow-hidden">
+
+          <!-- Benefits usage -->
+          <div class="flex-1 rounded-xl p-4 overflow-hidden" style="background:#1E2022;border:1px solid rgba(255,255,255,0.07);">
+            <div class="flex items-center justify-between mb-3">
+              <p style="color:white;font-size:12px;font-weight:700;">Benefit-Nutzung</p>
+              <span style="color:rgba(255,255,255,0.3);font-size:10px;">Dieser Monat</span>
+            </div>
+            <div class="space-y-2.5">
+              {[
+                {name:'Sachbezug', pct:94, amount:'50 €/MA', color:'#1A6B4A'},
+                {name:'Essenszuschuss', pct:87, amount:'7,23 €/Tag', color:'#4A9B7A'},
+                {name:'Mobilitätsbudget', pct:62, amount:'50 €/MA', color:'#F5A623'},
+                {name:'Internetzuschuss', pct:78, amount:'50 €/MA', color:'#4A9B7A'},
+                {name:'Firmenfitness', pct:45, amount:'600 €/Jahr', color:'#F5A623'},
+              ].map(b => (
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <span style="color:rgba(255,255,255,0.7);font-size:10px;font-weight:500;">{b.name}</span>
+                    <div class="flex items-center gap-2">
+                      <span style="color:rgba(255,255,255,0.3);font-size:9px;">{b.amount}</span>
+                      <span style={`color:${b.color};font-size:10px;font-weight:700;`}>{b.pct}%</span>
+                    </div>
+                  </div>
+                  <div class="h-1.5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.08);">
+                    <div class="h-full rounded-full" style={`width:${b.pct}%;background:${b.color};`}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Recent activity -->
+          <div class="rounded-xl p-4 overflow-hidden" style="width:200px;background:#1E2022;border:1px solid rgba(255,255,255,0.07);flex-shrink:0;">
+            <div class="flex items-center justify-between mb-3">
+              <p style="color:white;font-size:12px;font-weight:700;">Aktivitäten</p>
+              <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:#1A6B4A;"></span>
+            </div>
+            <div class="space-y-3">
+              {[
+                {avatar:'LK', name:'Lisa K.', action:'Sachbezug aktiviert', time:'vor 2 Min.', color:'#1A6B4A'},
+                {avatar:'TM', name:'Tom M.', action:'Essenszuschuss ↑', time:'vor 14 Min.', color:'#4A9B7A'},
+                {avatar:'SR', name:'Sara R.', action:'Onboarding abg.', time:'vor 1 Std.', color:'#F5A623'},
+                {avatar:'JB', name:'Jan B.', action:'Mobilitätsbudget', time:'vor 2 Std.', color:'#4A9B7A'},
+                {avatar:'MH', name:'Mia H.', action:'KiTa-Zuschuss', time:'gestern', color:'#1A6B4A'},
+              ].map(a => (
+                <div class="flex items-start gap-2">
+                  <div class="w-6 h-6 rounded-full flex items-center justify-center text-white flex-shrink-0" style={`background:${a.color};font-size:8px;font-weight:700;`}>{a.avatar}</div>
+                  <div>
+                    <p style="color:rgba(255,255,255,0.8);font-size:10px;font-weight:600;line-height:1.2;">{a.name}</p>
+                    <p style="color:rgba(255,255,255,0.35);font-size:9px;line-height:1.3;">{a.action}</p>
+                    <p style="color:rgba(255,255,255,0.2);font-size:9px;">{a.time}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

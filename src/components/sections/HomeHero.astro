@@ -1,18 +1,22 @@
 ---
+import DashboardMockup from '../ui/DashboardMockup.astro';
+import MobileAppMockup from '../ui/MobileAppMockup.astro';
+
 const base = import.meta.env.BASE_URL;
 ---
 
-<section class="bg-[#FAF9F7] py-20 md:py-28 overflow-hidden relative">
-  <!-- Background decoration -->
-  <div class="absolute inset-0 pointer-events-none opacity-20">
-    <img src={`${base}images/hero_background.webp`} alt="" class="w-full h-full object-cover" aria-hidden="true" />
-  </div>
+<section class="bg-[#FAF9F7] pt-16 pb-8 md:pt-24 md:pb-12 overflow-hidden relative">
+  <!-- Subtle background grid -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image: linear-gradient(#1A6B4A 1px, transparent 1px), linear-gradient(90deg, #1A6B4A 1px, transparent 1px); background-size: 40px 40px;"></div>
+  <!-- Radial glow -->
+  <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none" style="background:radial-gradient(circle, rgba(26,107,74,0.08) 0%, transparent 70%); transform: translate(20%, -20%);"></div>
 
   <div class="container mx-auto px-6 max-w-7xl relative z-10">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Content -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+      <!-- ── Left: Copy ── -->
       <div class="space-y-6 max-w-xl">
-        <!-- Eyebrow with animated badge -->
+        <!-- Eyebrow badge -->
         <div class="flex items-center gap-3">
           <span class="inline-flex items-center gap-1.5 bg-[#1A6B4A]/10 text-[#1A6B4A] text-xs font-bold px-3 py-1.5 rounded-full border border-[#1A6B4A]/20">
             <span class="w-2 h-2 rounded-full bg-[#1A6B4A] animate-pulse"></span>
@@ -20,6 +24,7 @@ const base = import.meta.env.BASE_URL;
           </span>
         </div>
 
+        <!-- Headline -->
         <h1 class="text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-[1.05] tracking-tight text-[#1B1D1E]">
           Mehr Netto für dein Team.<br class="hidden md:block" />
           <span class="text-[#1A6B4A]">Weniger Aufwand</span> für HR.
@@ -82,40 +87,43 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
 
-      <!-- Product UI Screenshot -->
-      <div class="relative">
-        <!-- Glow effect -->
-        <div class="absolute -inset-4 bg-[#1A6B4A]/10 rounded-3xl blur-2xl pointer-events-none"></div>
+      <!-- ── Right: HTML/CSS UI Mockups ── -->
+      <div class="relative hidden lg:flex items-start justify-center" style="min-height: 460px;">
 
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-[#F0EDE8]">
-          <img
-            src={`${base}images/product_ui_dashboard.webp`}
-            alt="become.1 Admin-Dashboard zur Verwaltung von Mitarbeiter-Benefits"
-            class="w-full"
-            width="800"
-            height="600"
-            loading="eager"
-          />
+        <!-- Glow behind dashboard -->
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 60% at 55% 45%, rgba(26,107,74,0.12) 0%, transparent 70%);"></div>
+
+        <!-- Desktop dashboard — main card -->
+        <div class="relative z-10 w-full" style="max-width: 560px; transform: perspective(1200px) rotateY(-4deg) rotateX(2deg); transform-origin: center center;">
+          <DashboardMockup />
         </div>
 
-        <!-- Floating mobile app card -->
-        <div class="absolute -bottom-6 -left-6 w-36 md:w-44 rounded-2xl overflow-hidden shadow-xl border-2 border-white hidden md:block">
-          <img
-            src={`${base}images/product_ui_mobile.webp`}
-            alt="become.1 Mitarbeiter-App"
-            class="w-full"
-            width="400"
-            height="700"
-            loading="eager"
-          />
+        <!-- Mobile app — floating card bottom-left -->
+        <div class="absolute z-20" style="bottom: -20px; left: -10px; transform: perspective(800px) rotateY(6deg) rotateX(-2deg);">
+          <MobileAppMockup />
         </div>
 
-        <!-- Floating metric badge -->
-        <div class="absolute -top-4 -right-4 bg-[#F5A623] text-[#1B1D1E] rounded-2xl px-4 py-3 shadow-lg hidden md:block">
+        <!-- Floating rating badge — top right -->
+        <div class="absolute z-30 top-0 right-0 bg-[#F5A623] text-[#1B1D1E] rounded-2xl px-4 py-3 shadow-xl" style="transform: translateY(-8px) rotate(2deg);">
           <p class="text-2xl font-extrabold leading-none">4,9 ★</p>
           <p class="text-xs font-semibold mt-0.5">Kundenbewertung</p>
         </div>
+
+        <!-- Floating "Live" indicator -->
+        <div class="absolute z-30 flex items-center gap-2 bg-white rounded-xl px-3 py-2 shadow-lg border border-[#F0EDE8]" style="top: 60px; right: -10px;">
+          <span class="w-2 h-2 rounded-full bg-[#1A6B4A] animate-pulse"></span>
+          <span class="text-xs font-semibold text-[#1B1D1E]">91% Aktivierungsrate</span>
+        </div>
+
       </div>
+
+      <!-- Mobile-only: stacked mockup (simplified) -->
+      <div class="lg:hidden relative overflow-hidden rounded-2xl border border-[#F0EDE8] shadow-xl" style="max-height:300px;">
+        <div class="overflow-hidden" style="transform: scale(0.75); transform-origin: top center; height: 400px;">
+          <DashboardMockup />
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

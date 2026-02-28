@@ -1,0 +1,127 @@
+---
+// Mobile Employee App Mockup — pure HTML/CSS, no images
+---
+
+<div class="mobile-mockup select-none" style="font-family:'Poppins',sans-serif;width:200px;flex-shrink:0;">
+  <!-- Phone shell -->
+  <div class="relative rounded-[32px] overflow-hidden shadow-2xl" style="background:#1A1C1E;border:2px solid rgba(255,255,255,0.12);padding:10px;">
+
+    <!-- Status bar -->
+    <div class="flex items-center justify-between px-2 mb-2" style="height:18px;">
+      <span style="color:rgba(255,255,255,0.6);font-size:9px;font-weight:600;">9:41</span>
+      <div class="flex items-center gap-1">
+        <!-- Signal -->
+        <div class="flex items-end gap-0.5">
+          <div style="width:3px;height:4px;background:rgba(255,255,255,0.6);border-radius:1px;"></div>
+          <div style="width:3px;height:6px;background:rgba(255,255,255,0.6);border-radius:1px;"></div>
+          <div style="width:3px;height:8px;background:rgba(255,255,255,0.6);border-radius:1px;"></div>
+          <div style="width:3px;height:10px;background:rgba(255,255,255,0.25);border-radius:1px;"></div>
+        </div>
+        <!-- WiFi -->
+        <svg style="width:10px;height:10px;color:rgba(255,255,255,0.6);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 00.808 9.636a9 9 0 0112.728 0 1 1 0 001.414-1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.242 0 1 1 0 01-1.415-1.415 5 5 0 017.072 0 1 1 0 01-1.415 1.415zM11 16a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd"/></svg>
+        <!-- Battery -->
+        <div class="flex items-center gap-0.5">
+          <div class="rounded-sm overflow-hidden" style="width:18px;height:9px;border:1px solid rgba(255,255,255,0.5);padding:1px;">
+            <div style="width:75%;height:100%;background:#1A6B4A;border-radius:1px;"></div>
+          </div>
+          <div style="width:2px;height:5px;background:rgba(255,255,255,0.4);border-radius:1px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screen content -->
+    <div class="rounded-2xl overflow-hidden" style="background:#FAF9F7;">
+
+      <!-- App header -->
+      <div class="px-4 pt-4 pb-3" style="background:#1A6B4A;">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <p style="color:rgba(255,255,255,0.7);font-size:9px;font-weight:500;">Guten Morgen 👋</p>
+            <p style="color:white;font-size:12px;font-weight:700;line-height:1.2;">Lisa Kaufmann</p>
+          </div>
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold" style="background:rgba(255,255,255,0.2);font-size:11px;">LK</div>
+        </div>
+
+        <!-- Balance card -->
+        <div class="rounded-xl p-3" style="background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);">
+          <p style="color:rgba(255,255,255,0.7);font-size:8px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;">Verfügbares Budget</p>
+          <p style="color:white;font-size:22px;font-weight:800;line-height:1.1;margin-top:1px;">€ 86,50</p>
+          <div class="flex items-center justify-between mt-2">
+            <div>
+              <div class="h-1.5 rounded-full overflow-hidden" style="width:100px;background:rgba(255,255,255,0.2);">
+                <div style="width:73%;height:100%;background:#F5A623;border-radius:9999px;"></div>
+              </div>
+              <p style="color:rgba(255,255,255,0.6);font-size:8px;margin-top:2px;">73% von 118,50 € genutzt</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="px-3 py-3">
+        <div class="grid grid-cols-4 gap-1.5">
+          {[
+            {emoji:'🎁', label:'Sachbezug'},
+            {emoji:'🍽️', label:'Essen'},
+            {emoji:'🚲', label:'Mobilität'},
+            {emoji:'💪', label:'Fitness'},
+          ].map(a => (
+            <div class="flex flex-col items-center gap-1 p-2 rounded-xl cursor-pointer" style="background:white;border:1px solid #F0EDE8;">
+              <span style="font-size:14px;">{a.emoji}</span>
+              <span style="color:#1B1D1E;font-size:7px;font-weight:600;text-align:center;line-height:1.2;">{a.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Active benefits -->
+      <div class="px-3 pb-3">
+        <div class="flex items-center justify-between mb-2">
+          <p style="color:#1B1D1E;font-size:10px;font-weight:700;">Aktive Benefits</p>
+          <p style="color:#1A6B4A;font-size:8px;font-weight:600;">Alle →</p>
+        </div>
+        <div class="space-y-1.5">
+          {[
+            {emoji:'🎁', name:'Sachbezug', detail:'50 € / Monat', used:'50 €', pct:100, color:'#1A6B4A'},
+            {emoji:'🍽️', name:'Essenszuschuss', detail:'7,23 € / Tag', used:'36,50 €', pct:73, color:'#4A9B7A'},
+            {emoji:'🚲', name:'Mobilitätsbudget', detail:'50 € / Monat', used:'0 €', pct:0, color:'#F5A623'},
+          ].map(b => (
+            <div class="flex items-center gap-2.5 p-2 rounded-xl" style="background:white;border:1px solid #F0EDE8;">
+              <span style="font-size:16px;">{b.emoji}</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <p style="color:#1B1D1E;font-size:9px;font-weight:600;">{b.name}</p>
+                  <p style={`color:${b.color};font-size:8px;font-weight:700;`}>{b.used}</p>
+                </div>
+                <div class="h-1 rounded-full overflow-hidden mt-1" style="background:#F0EDE8;">
+                  <div style={`width:${b.pct}%;height:100%;background:${b.color};border-radius:9999px;`}></div>
+                </div>
+                <p style="color:rgba(27,29,30,0.4);font-size:7px;margin-top:1px;">{b.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Bottom nav -->
+      <div class="flex items-center justify-around px-2 py-2 border-t" style="border-color:#F0EDE8;background:white;">
+        {[
+          {icon:'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', active:true},
+          {icon:'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', active:false},
+          {icon:'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', active:false},
+          {icon:'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z', active:false},
+        ].map(n => (
+          <div class="flex flex-col items-center p-1.5 rounded-lg" style={n.active ? 'background:rgba(26,107,74,0.1);' : ''}>
+            <svg class="w-4 h-4" style={`color:${n.active ? '#1A6B4A' : 'rgba(27,29,30,0.3)'};`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={n.icon}/></svg>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- Home indicator -->
+    <div class="flex justify-center pt-2">
+      <div class="rounded-full" style="width:40px;height:4px;background:rgba(255,255,255,0.3);"></div>
+    </div>
+  </div>
+</div>
