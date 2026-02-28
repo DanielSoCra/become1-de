@@ -1,39 +1,40 @@
 ---
+const base = import.meta.env.BASE_URL;
 const benefits = [
   {
     title: 'Sachbezug',
     description: 'Bis zu 50 € monatlich steuerfrei',
-    href: '/benefits/sachbezug/',
-    image: '/become1-de/images/benefit_card_sachbezug.png',
+    href: `${base}benefits/sachbezug/`,
+    image: `${base}images/benefit_card_sachbezug.png`,
   },
   {
     title: 'Essenszuschuss',
     description: 'Bis zu 7,50 € täglich steuerfrei',
-    href: '/benefits/essenszuschuss/',
-    image: '/become1-de/images/benefit_card_essenszuschuss.png',
+    href: `${base}benefits/essenszuschuss/`,
+    image: `${base}images/benefit_card_essenszuschuss.png`,
   },
   {
     title: 'Mobilität',
     description: 'Bis zu 50 € monatlich steuerfrei',
-    href: '/benefits/mobilitaetsbudget/',
-    image: '/become1-de/images/benefit_card_mobilitaet.png',
+    href: `${base}benefits/mobilitaetsbudget/`,
+    image: `${base}images/benefit_card_mobilitaet.png`,
   },
   {
     title: 'Internetzuschuss',
     description: 'Bis zu 50 € monatlich steuerfrei',
-    href: '/benefits/internetzuschuss/',
+    href: `${base}benefits/internetzuschuss/`,
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>`,
   },
   {
     title: 'KiTa-Zuschuss',
     description: 'Steuerfrei & sozialabgabenfrei',
-    href: '/benefits/kita-zuschuss/',
+    href: `${base}benefits/kita-zuschuss/`,
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
   },
   {
     title: 'Firmenfitness',
     description: 'Gesundheitsförderung bis 600 €/Jahr',
-    href: '/benefits/firmenfitness/',
+    href: `${base}benefits/firmenfitness/`,
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
   },
 ];
@@ -71,7 +72,7 @@ const benefits = [
     </div>
 
     <div class="text-center mt-10">
-      <a href="/benefits/" class="btn-secondary">
+      <a href={`${base}benefits/`} class="btn-secondary">
         Alle Benefits entdecken →
       </a>
     </div>

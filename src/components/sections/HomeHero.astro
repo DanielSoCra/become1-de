@@ -1,10 +1,11 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="bg-[#FAF9F7] py-20 md:py-28 overflow-hidden relative">
   <!-- Background decoration -->
   <div class="absolute inset-0 pointer-events-none opacity-30">
-    <img src="/become1-de/images/hero_background.png" alt="" class="w-full h-full object-cover" aria-hidden="true" />
+    <img src={`${base}images/hero_background.png`} alt="" class="w-full h-full object-cover" aria-hidden="true" />
   </div>
 
   <div class="container mx-auto px-6 max-w-7xl relative z-10">
@@ -44,10 +45,10 @@
 
         <!-- CTAs -->
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
-          <a href="/demo/" class="btn-primary">
+          <a href={`${base}demo/`} class="btn-primary">
             Kostenlose Demo vereinbaren
           </a>
-          <a href="/preise/" class="btn-ghost">
+          <a href={`${base}preise/`} class="btn-ghost">
             Preise ansehen
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -60,7 +61,7 @@
       <div class="relative">
         <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-[#F0EDE8]">
           <img
-            src="/become1-de/images/product_ui_dashboard.png"
+            src={`${base}images/product_ui_dashboard.png`}
             alt="become.1 Admin-Dashboard zur Verwaltung von Mitarbeiter-Benefits"
             class="w-full"
             width="800"
@@ -71,7 +72,7 @@
         <!-- Floating mobile app card -->
         <div class="absolute -bottom-6 -left-6 w-36 md:w-44 rounded-2xl overflow-hidden shadow-xl border-2 border-white hidden md:block">
           <img
-            src="/become1-de/images/product_ui_mobile.png"
+            src={`${base}images/product_ui_mobile.png`}
             alt="become.1 Mitarbeiter-App"
             class="w-full"
             width="400"
