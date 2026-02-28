@@ -1,0 +1,70 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle: string;
+  tag: string;
+  tagColor?: string;
+  limit: string;
+  limitLabel: string;
+  heroImage: string;
+  heroImageAlt: string;
+}
+
+const {
+  eyebrow = 'BENEFIT',
+  title,
+  subtitle,
+  tag,
+  tagColor = 'bg-[#F5A623]',
+  limit,
+  limitLabel,
+  heroImage,
+  heroImageAlt,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="bg-[#FAF9F7] py-16 md:py-24 overflow-hidden">
+  <div class="container mx-auto px-6 max-w-7xl">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left: Text -->
+      <div>
+        <p class="eyebrow">{eyebrow}</p>
+        <h1 class="text-4xl md:text-[52px] font-extrabold text-[#1B1D1E] mt-2 mb-5 leading-tight">
+          {title}
+        </h1>
+        <p class="text-lg text-[#1B1D1E]/60 mb-8 leading-relaxed">
+          {subtitle}
+        </p>
+        <!-- Key stat -->
+        <div class={`inline-flex items-center gap-3 ${tagColor} rounded-2xl px-6 py-4 mb-8`}>
+          <span class="text-3xl font-extrabold text-[#1B1D1E]">{limit}</span>
+          <span class="text-sm font-semibold text-[#1B1D1E]/80">{limitLabel}</span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={`${base}demo/`} class="btn-primary">Kostenlose Demo vereinbaren</a>
+          <a href={`${base}preise/`} class="btn-secondary">Preise ansehen</a>
+        </div>
+      </div>
+      <!-- Right: Image -->
+      <div class="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
+        <img
+          src={heroImage}
+          alt={heroImageAlt}
+          class="w-full h-full object-cover"
+          width="800"
+          height="600"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#1B1D1E]/20 to-transparent"></div>
+        <div class="absolute bottom-4 left-4 right-4">
+          <span class="inline-block bg-white/90 backdrop-blur-sm text-[#1A6B4A] font-bold text-sm px-4 py-2 rounded-full">
+            {tag}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

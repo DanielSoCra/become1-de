@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitHero from '../../components/sections/BenefitHero.astro';
+import BenefitDetails from '../../components/sections/BenefitDetails.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const facts = [
+  { value: 'Unbegrenzt', label: 'Freibetrag', note: 'Kein gesetzliches Maximum' },
+  { value: '§ 3 Nr. 33', label: 'Rechtsgrundlage', note: 'Einkommensteuergesetz (EStG)' },
+  { value: '0 €', label: 'Lohnsteuer', note: 'Vollständig steuerfrei' },
+  { value: '0 €', label: 'Sozialabgaben', note: 'Vollständig abgabenfrei' },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'KiTa-Zuschuss einrichten',
+    description: 'Aktiviere den KiTa-Zuschuss im Admin-Dashboard und lege den monatlichen Betrag pro berechtigtem Mitarbeiter fest.',
+  },
+  {
+    number: '02',
+    title: 'Nachweis einreichen',
+    description: 'Mitarbeiter laden den KiTa-Vertrag und die Rechnung über die become.1 App hoch. Die Prüfung erfolgt automatisch.',
+  },
+  {
+    number: '03',
+    title: 'Direkte Erstattung',
+    description: 'Der Zuschuss wird monatlich direkt mit dem Gehalt ausgezahlt – steuerfrei, sozialabgabenfrei und vollautomatisch.',
+  },
+];
+---
+
+<Layout
+  title="KiTa-Zuschuss – Steuerfreie Kinderbetreuung für Mitarbeiter"
+  description="Biete deinen Mitarbeitern einen steuerfreien KiTa-Zuschuss ohne Begrenzung. Unterstütze Eltern in deinem Team. Jetzt mit become.1."
+>
+  <BenefitHero
+    eyebrow="BENEFIT: KITA-ZUSCHUSS"
+    title="KiTa-Zuschuss: Familien stärken, Fachkräfte halten."
+    subtitle="Kein gesetzliches Maximum, vollständig steuerfrei und sozialabgabenfrei. Der KiTa-Zuschuss ist einer der wertvollsten Benefits für Eltern in deinem Team."
+    tag="Unbegrenzt steuerfrei"
+    tagColor="bg-[#F5A623]"
+    limit="∞"
+    limitLabel="Kein gesetzliches Maximum – vollständig steuerfrei"
+    heroImage={`${base}images/benefit_kita_hero.webp`}
+    heroImageAlt="Elternteil bringt Kind in die KiTa"
+  />
+
+  <BenefitDetails
+    facts={facts}
+    steps={steps}
+    eligibilityTitle="Wer kann den KiTa-Zuschuss erhalten?"
+    eligibilityText="Der steuerfreie KiTa-Zuschuss nach § 3 Nr. 33 EStG gilt für alle Arbeitnehmer, die Kinder haben, die noch nicht schulpflichtig sind (in der Regel bis zum vollendeten 6. Lebensjahr). Der Zuschuss muss für die Unterbringung und Betreuung in einer Kindertagesstätte, einem Kindergarten, einer Kinderkrippe oder bei einer Tagesmutter verwendet werden. Es gibt keine gesetzliche Obergrenze – der Arbeitgeber kann die tatsächlichen Kosten vollständig erstatten."
+  />
+
+  <!-- Impact Section -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Warum der KiTa-Zuschuss so wichtig ist</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          {
+            stat: '1.200 €',
+            label: 'Ø monatliche KiTa-Kosten',
+            desc: 'Viele Eltern zahlen über 1.000 € pro Monat für die Kinderbetreuung. Ein Zuschuss macht einen riesigen Unterschied.',
+          },
+          {
+            stat: '73%',
+            label: 'Erhöhte Mitarbeiterbindung',
+            desc: 'Unternehmen, die KiTa-Zuschüsse anbieten, berichten von deutlich höherer Loyalität bei Eltern im Team.',
+          },
+          {
+            stat: '0 €',
+            label: 'Steuern & Abgaben',
+            desc: 'Der KiTa-Zuschuss ist einer der wenigen Benefits ohne gesetzliches Maximum und vollständig steuerfrei.',
+          },
+        ].map((item) => (
+          <div class="bg-white rounded-2xl p-6 text-center border border-[#F0EDE8]">
+            <p class="text-4xl font-extrabold text-[#1A6B4A] mb-1">{item.stat}</p>
+            <p class="font-semibold text-[#1B1D1E] mb-2">{item.label}</p>
+            <p class="text-sm text-[#1B1D1E]/60">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA
+    heading="Jetzt KiTa-Zuschuss für dein Team einrichten"
+    subheading="Zeige Eltern in deinem Team echte Wertschätzung. In weniger als 15 Minuten startklar."
+  />
+</Layout>

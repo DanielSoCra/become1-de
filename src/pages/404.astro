@@ -1,14 +1,54 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const helpfulLinks = [
+  { label: 'Zur Startseite', href: `${base}`, primary: true },
+  { label: 'Alle Benefits', href: `${base}benefits/`, primary: false },
+  { label: 'Preise', href: `${base}preise/`, primary: false },
+  { label: 'Demo vereinbaren', href: `${base}demo/`, primary: false },
+];
 ---
 
-<Layout title="Seite nicht gefunden" description="Diese Seite wurde nicht gefunden.">
-  <section class="bg-[#FAF9F7] py-32">
-    <div class="container mx-auto px-6 max-w-2xl text-center">
-      <p class="text-8xl font-extrabold text-[#F0EDE8] mb-4">404</p>
-      <h1 class="text-3xl font-bold text-[#1B1D1E] mb-4">Diese Seite existiert nicht</h1>
-      <p class="text-[#1B1D1E]/60 mb-8">Die gesuchte Seite wurde nicht gefunden oder wurde verschoben.</p>
-      <a href="/" class="btn-primary">Zurück zur Startseite</a>
+<Layout
+  title="Seite nicht gefunden – become.1"
+  description="Diese Seite existiert nicht. Aber wir helfen dir gerne weiter."
+>
+  <section class="bg-[#FAF9F7] min-h-[70vh] flex items-center">
+    <div class="container mx-auto px-6 max-w-3xl text-center py-20">
+      <div class="relative mb-8 inline-block">
+        <p class="text-[160px] md:text-[200px] font-extrabold text-[#F0EDE8] leading-none select-none">
+          404
+        </p>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-20 h-20 bg-[#1A6B4A] rounded-full flex items-center justify-center shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="text-3xl md:text-[40px] font-extrabold text-[#1B1D1E] mb-4">
+        Diese Seite existiert nicht.
+      </h1>
+      <p class="text-lg text-[#1B1D1E]/60 mb-10 max-w-xl mx-auto">
+        Aber keine Sorge – dein Benefit-Potenzial ist noch da. Vielleicht hilft dir einer dieser Links weiter:
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        {helpfulLinks.map((link) => (
+          <a href={link.href} class={link.primary ? 'btn-primary' : 'btn-secondary'}>
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <p class="text-sm text-[#1B1D1E]/40">
+        Oder schreib uns direkt:
+        <a href="mailto:hallo@become1.de" class="text-[#1A6B4A] hover:underline">hallo@become1.de</a>
+      </p>
     </div>
   </section>
 </Layout>

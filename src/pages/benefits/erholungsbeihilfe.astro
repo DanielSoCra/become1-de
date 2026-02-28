@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitHero from '../../components/sections/BenefitHero.astro';
+import BenefitDetails from '../../components/sections/BenefitDetails.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const facts = [
+  { value: '156 €', label: 'Jährlicher Freibetrag (MA)', note: 'Steuerfrei & sozialabgabenfrei' },
+  { value: '104 €', label: 'Zusatz für Ehepartner', note: 'Pro Jahr steuerfrei' },
+  { value: '52 €', label: 'Zusatz pro Kind', note: 'Pro Jahr steuerfrei' },
+  { value: '§ 40 Abs. 2', label: 'Rechtsgrundlage', note: 'Einkommensteuergesetz (EStG)' },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Erholungsbeihilfe aktivieren',
+    description: 'Aktiviere die Erholungsbeihilfe im Admin-Dashboard. Sie kann einmalig jährlich oder aufgeteilt gewährt werden.',
+  },
+  {
+    number: '02',
+    title: 'Mitarbeiter reicht Nachweis ein',
+    description: 'Mitarbeiter laden einen Urlaubsnachweis (z.B. Hotelbuchung) über die become.1 App hoch.',
+  },
+  {
+    number: '03',
+    title: 'Automatische Auszahlung',
+    description: 'Die Erholungsbeihilfe wird direkt mit dem Gehalt ausgezahlt – pauschal versteuert vom Arbeitgeber.',
+  },
+];
+---
+
+<Layout
+  title="Erholungsbeihilfe – Bis zu 156 € jährlich steuerfrei"
+  description="Biete deinen Mitarbeitern bis zu 156 € jährlich als Erholungsbeihilfe. Steuerfrei für Urlaub und Erholung. Jetzt mit become.1."
+>
+  <BenefitHero
+    eyebrow="BENEFIT: ERHOLUNGSBEIHILFE"
+    title="Erholungsbeihilfe: Urlaub auf Kosten des Chefs."
+    subtitle="Bis zu 156 € jährlich steuerfrei für Mitarbeiter – plus 104 € für den Ehepartner und 52 € pro Kind. Ein einfacher, wertgeschätzter Benefit für die ganze Familie."
+    tag="Für die ganze Familie"
+    tagColor="bg-[#F5A623]"
+    limit="156 €"
+    limitLabel="jährlich steuerfrei pro Mitarbeiter"
+    heroImage={`${base}images/warum_wir_hero.webp`}
+    heroImageAlt="Familie im Urlaub am Strand"
+  />
+
+  <BenefitDetails
+    facts={facts}
+    steps={steps}
+    eligibilityTitle="Was ist bei der Erholungsbeihilfe zu beachten?"
+    eligibilityText="Die Erholungsbeihilfe nach § 40 Abs. 2 Nr. 3 EStG kann vom Arbeitgeber pauschal mit 25% versteuert werden. Der Arbeitnehmer muss nachweisen, dass er den Betrag tatsächlich für Erholungszwecke verwendet hat (z.B. durch eine Hotelbuchung oder Reiserechnung). Die Beihilfe muss im zeitlichen Zusammenhang mit dem Urlaub gewährt werden. Der Freibetrag gilt pro Kalenderjahr und kann nicht auf das nächste Jahr übertragen werden."
+  />
+
+  <FinalCTA
+    heading="Jetzt Erholungsbeihilfe für dein Team einrichten"
+    subheading="Ein einfacher Benefit mit großer Wirkung. In weniger als 15 Minuten startklar."
+  />
+</Layout>

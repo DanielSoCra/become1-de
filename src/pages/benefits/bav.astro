@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitHero from '../../components/sections/BenefitHero.astro';
+import BenefitDetails from '../../components/sections/BenefitDetails.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const facts = [
+  { value: '3.624 €', label: 'Jährlicher Freibetrag', note: '4% der Beitragsbemessungsgrenze 2025' },
+  { value: '§ 3 Nr. 63', label: 'Rechtsgrundlage', note: 'Einkommensteuergesetz (EStG)' },
+  { value: '15%', label: 'AG-Zuschuss Pflicht', note: 'Bei Entgeltumwandlung' },
+  { value: 'Zukunft', label: 'Investition in', note: 'Mitarbeiterbindung & Altersvorsorge' },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'BAV-Modell wählen',
+    description: 'Wähle zwischen Arbeitgeberzuschuss, Entgeltumwandlung oder einer Kombination aus beidem. Unsere Experten beraten dich.',
+  },
+  {
+    number: '02',
+    title: 'Mitarbeiter onboarden',
+    description: 'Mitarbeiter werden über die become.1 App über ihre BAV-Optionen informiert und können ihren Beitrag selbst festlegen.',
+  },
+  {
+    number: '03',
+    title: 'Automatische Verwaltung',
+    description: 'Beiträge werden automatisch abgeführt und mit der Lohnbuchhaltung synchronisiert. Kein manueller Aufwand.',
+  },
+];
+---
+
+<Layout
+  title="Betriebliche Altersvorsorge (BAV) – Steueroptimiert vorsorgen"
+  description="Biete deinen Mitarbeitern eine betriebliche Altersvorsorge. Steueroptimiert, einfach verwaltet und mit become.1 vollautomatisch."
+>
+  <BenefitHero
+    eyebrow="BENEFIT: BETRIEBLICHE ALTERSVORSORGE"
+    title="Betriebliche Altersvorsorge: Gemeinsam für die Zukunft vorsorgen."
+    subtitle="Bis zu 3.624 € jährlich steuerfrei in die Altersvorsorge einzahlen. Ein Benefit, der langfristig Wirkung zeigt – und Mitarbeiter dauerhaft bindet."
+    tag="Langfristige Bindung"
+    tagColor="bg-[#1A6B4A] text-white"
+    limit="3.624 €"
+    limitLabel="jährlich steuerfrei in die Altersvorsorge"
+    heroImage={`${base}images/blog_post_3.webp`}
+    heroImageAlt="Mitarbeiter plant seine Altersvorsorge"
+  />
+
+  <BenefitDetails
+    facts={facts}
+    steps={steps}
+    eligibilityTitle="Wer hat Anspruch auf BAV?"
+    eligibilityText="Alle Arbeitnehmer in einem sozialversicherungspflichtigen Beschäftigungsverhältnis haben einen gesetzlichen Anspruch auf betriebliche Altersvorsorge durch Entgeltumwandlung. Seit 2019 sind Arbeitgeber verpflichtet, bei Entgeltumwandlung einen Zuschuss von mindestens 15% zu leisten, sofern sie durch die Entgeltumwandlung Sozialversicherungsbeiträge einsparen. Arbeitgeber können darüber hinaus freiwillig höhere Zuschüsse leisten."
+  />
+
+  <!-- BAV Models -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Die drei BAV-Modelle im Überblick</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          {
+            title: 'Arbeitgeberzuschuss',
+            desc: 'Du als Arbeitgeber zahlst einen festen Betrag in die Altersvorsorge deiner Mitarbeiter ein – zusätzlich zum Gehalt.',
+            highlight: false,
+          },
+          {
+            title: 'Entgeltumwandlung',
+            desc: 'Mitarbeiter wandeln einen Teil ihres Bruttogehalts in Altersvorsorgebeiträge um. Du zahlst den gesetzlichen Zuschuss von 15%.',
+            highlight: true,
+          },
+          {
+            title: 'Kombination',
+            desc: 'Die optimale Lösung: Arbeitgeberzuschuss plus Entgeltumwandlung. Maximale Steuerersparnis für beide Seiten.',
+            highlight: false,
+          },
+        ].map((model) => (
+          <div class={`rounded-2xl p-8 border ${model.highlight ? 'bg-[#1A6B4A] border-[#1A6B4A]' : 'bg-white border-[#F0EDE8]'}`}>
+            <h3 class={`text-lg font-bold mb-3 ${model.highlight ? 'text-white' : 'text-[#1B1D1E]'}`}>{model.title}</h3>
+            <p class={`text-sm leading-relaxed ${model.highlight ? 'text-white/80' : 'text-[#1B1D1E]/60'}`}>{model.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA
+    heading="Jetzt BAV für dein Team einrichten"
+    subheading="Unsere Experten beraten dich kostenlos zu den besten BAV-Optionen für dein Unternehmen."
+  />
+</Layout>

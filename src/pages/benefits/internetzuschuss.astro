@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitHero from '../../components/sections/BenefitHero.astro';
+import BenefitDetails from '../../components/sections/BenefitDetails.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const facts = [
+  { value: '50 €', label: 'Monatlicher Freibetrag', note: 'Steuerfrei & sozialabgabenfrei' },
+  { value: '600 €', label: 'Jährlicher Vorteil', note: 'Pro Mitarbeiter' },
+  { value: '§ 3 Nr. 45', label: 'Rechtsgrundlage', note: 'Einkommensteuergesetz (EStG)' },
+  { value: 'Homeoffice', label: 'Perfekt für', note: 'Remote & hybride Teams' },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Zuschuss aktivieren',
+    description: 'Aktiviere den Internetzuschuss im Admin-Dashboard und lege den monatlichen Betrag fest – bis zu 50 € steuerfrei.',
+  },
+  {
+    number: '02',
+    title: 'Mitarbeiter reicht Beleg ein',
+    description: 'Mitarbeiter laden ihre Internetrechnung einfach über die become.1 App hoch. Die Prüfung erfolgt automatisch.',
+  },
+  {
+    number: '03',
+    title: 'Automatische Erstattung',
+    description: 'Der Zuschuss wird direkt mit dem Gehalt ausgezahlt – steuerfrei und ohne zusätzlichen Aufwand.',
+  },
+];
+---
+
+<Layout
+  title="Internetzuschuss – Bis zu 50 € monatlich steuerfrei"
+  description="Biete deinen Mitarbeitern bis zu 50 € monatlich als steuerfreien Internetzuschuss. Perfekt für Homeoffice und Remote-Teams. Jetzt mit become.1."
+>
+  <BenefitHero
+    eyebrow="BENEFIT: INTERNETZUSCHUSS"
+    title="Internetzuschuss: Schnelles Internet – auf Kosten des Arbeitgebers."
+    subtitle="Bis zu 50 € monatlich steuerfrei für das Homeoffice-Internet. Ein Benefit, der besonders für Remote- und hybride Teams ein echter Mehrwert ist."
+    tag="Ideal für Remote-Teams"
+    tagColor="bg-[#F5A623]"
+    limit="50 €"
+    limitLabel="monatlich steuerfrei für Internet"
+    heroImage={`${base}images/benefit_internet_hero.webp`}
+    heroImageAlt="Mitarbeiter im Homeoffice mit schnellem Internet"
+  />
+
+  <BenefitDetails
+    facts={facts}
+    steps={steps}
+    eligibilityTitle="Was genau ist förderfähig?"
+    eligibilityText="Der steuerfreie Internetzuschuss nach § 3 Nr. 45 EStG gilt für private Internetanschlüsse, die der Mitarbeiter auch für berufliche Zwecke nutzt. Es ist nicht erforderlich, dass der Anschluss ausschließlich beruflich genutzt wird. Der Arbeitgeber kann bis zu 50 € monatlich steuerfrei erstatten. Voraussetzung ist, dass der Mitarbeiter die Kosten selbst trägt und einen entsprechenden Nachweis (Rechnung) vorlegt."
+  />
+
+  <!-- Why It Matters -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-[#1B1D1E] mb-4">Warum der Internetzuschuss so wertvoll ist</h2>
+          <p class="text-[#1B1D1E]/70 leading-relaxed mb-4">
+            In einer Welt, in der hybrides Arbeiten zur Norm geworden ist, ist ein schnelles und zuverlässiges Internet kein Luxus mehr – es ist eine Arbeitsvoraussetzung. Mit dem Internetzuschuss zeigst du deinen Mitarbeitern, dass du ihre Arbeitsbedingungen ernst nimmst.
+          </p>
+          <p class="text-[#1B1D1E]/70 leading-relaxed">
+            Gleichzeitig profitierst du als Arbeitgeber: Statt einer Gehaltserhöhung von 100 € brutto (die dich ~120 € kostet und beim Mitarbeiter nur ~50 € netto ankommen), gibst du 50 € steuerfrei – und der Mitarbeiter erhält den vollen Betrag.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border border-[#F0EDE8]">
+          <h3 class="font-bold text-[#1B1D1E] mb-4">Rechenbeispiel</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between py-2 border-b border-[#F0EDE8]">
+              <span class="text-[#1B1D1E]/60">Monatliche Internetkosten MA</span>
+              <span class="font-bold">50 €</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-[#F0EDE8]">
+              <span class="text-[#1B1D1E]/60">Zuschuss vom AG</span>
+              <span class="font-bold text-[#1A6B4A]">50 €</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-[#F0EDE8]">
+              <span class="text-[#1B1D1E]/60">Steuer auf Zuschuss</span>
+              <span class="font-bold text-[#1A6B4A]">0 €</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="font-semibold text-[#1B1D1E]">Effektive Internetkosten MA</span>
+              <span class="font-extrabold text-[#1A6B4A]">0 €</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA
+    heading="Jetzt Internetzuschuss für dein Team einrichten"
+    subheading="Besonders wertvoll für Remote- und hybride Teams. In weniger als 15 Minuten startklar."
+  />
+</Layout>

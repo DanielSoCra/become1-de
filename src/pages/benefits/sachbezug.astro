@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitHero from '../../components/sections/BenefitHero.astro';
+import BenefitDetails from '../../components/sections/BenefitDetails.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const facts = [
+  { value: '50 €', label: 'Monatlicher Freibetrag', note: 'Steuerfrei & sozialabgabenfrei' },
+  { value: '600 €', label: 'Jährlicher Vorteil', note: 'Pro Mitarbeiter' },
+  { value: '§ 8 Abs. 2', label: 'Rechtsgrundlage', note: 'Einkommensteuergesetz (EStG)' },
+  { value: '100%', label: 'Rechtssicher', note: 'Geprüft & garantiert' },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Sachbezug aktivieren',
+    description: 'Aktiviere den Sachbezug in deinem become.1 Admin-Dashboard mit einem Klick. Wähle den monatlichen Betrag pro Mitarbeiter.',
+  },
+  {
+    number: '02',
+    title: 'Mitarbeiter erhalten Karte',
+    description: 'Deine Mitarbeiter erhalten automatisch eine become.1 Prepaid-Mastercard, die monatlich mit dem gewählten Betrag aufgeladen wird.',
+  },
+  {
+    number: '03',
+    title: 'Flexibel einlösen',
+    description: 'Die Mitarbeiter können die Karte bei tausenden von Akzeptanzstellen einsetzen – vom Supermarkt bis zum Online-Shop.',
+  },
+];
+---
+
+<Layout
+  title="Sachbezug – Bis zu 50 € monatlich steuerfrei"
+  description="Biete deinen Mitarbeitern bis zu 50 € monatlich als steuerfreien Sachbezug. Einfach, rechtssicher und vollautomatisch mit become.1."
+>
+  <BenefitHero
+    eyebrow="BENEFIT: SACHBEZUG"
+    title="Sachbezug: Der Klassiker unter den steuerfreien Benefits."
+    subtitle="Bis zu 50 € monatlich steuerfrei für jeden Mitarbeiter. Kein Aufwand, keine Steuerrisiken – dafür echte Wertschätzung, die ankommt."
+    tag="Beliebtester Benefit"
+    tagColor="bg-[#F5A623]"
+    limit="50 €"
+    limitLabel="monatlich steuerfrei pro Mitarbeiter"
+    heroImage={`${base}images/benefit_sachbezug_hero.webp`}
+    heroImageAlt="Mitarbeiterin löst Sachbezug-Karte im Geschäft ein"
+  />
+
+  <BenefitDetails
+    facts={facts}
+    steps={steps}
+    eligibilityTitle="Wer kann den Sachbezug nutzen?"
+    eligibilityText="Alle Arbeitnehmer in einem sozialversicherungspflichtigen Beschäftigungsverhältnis können den Sachbezug erhalten. Der Freibetrag von 50 € gilt pro Monat und kann nicht auf den nächsten Monat übertragen werden. Der Vorteil ist zusätzlich zum regulären Gehalt zu gewähren – eine Gehaltsumwandlung ist in diesem Fall nicht möglich."
+  />
+
+  <!-- Comparison Table -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Sachbezug vs. Gehaltserhöhung</h2>
+        <p class="text-[#1B1D1E]/60 mt-2">Ein direkter Vergleich der Kosten und Vorteile</p>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden border border-[#F0EDE8]">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-[#FAF9F7]">
+              <th class="text-left p-4 font-semibold text-[#1B1D1E]">Vergleich</th>
+              <th class="text-center p-4 font-semibold text-red-500">Gehaltserhöhung</th>
+              <th class="text-center p-4 font-semibold text-[#1A6B4A]">Sachbezug</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#F0EDE8]">
+            <tr>
+              <td class="p-4 text-[#1B1D1E]/70">Kosten für Arbeitgeber</td>
+              <td class="p-4 text-center font-bold text-red-500">~120 €</td>
+              <td class="p-4 text-center font-bold text-[#1A6B4A]">50 €</td>
+            </tr>
+            <tr class="bg-[#FAF9F7]/50">
+              <td class="p-4 text-[#1B1D1E]/70">Netto beim Mitarbeiter</td>
+              <td class="p-4 text-center font-bold text-red-500">~50 €</td>
+              <td class="p-4 text-center font-bold text-[#1A6B4A]">50 €</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-[#1B1D1E]/70">Lohnsteuer & Sozialabgaben</td>
+              <td class="p-4 text-center text-red-500">Ja, ~50%</td>
+              <td class="p-4 text-center text-[#1A6B4A]">Nein, 0%</td>
+            </tr>
+            <tr class="bg-[#FAF9F7]/50">
+              <td class="p-4 text-[#1B1D1E]/70">Verwaltungsaufwand</td>
+              <td class="p-4 text-center text-[#1B1D1E]/60">Mittel</td>
+              <td class="p-4 text-center text-[#1A6B4A]">Vollautomatisch</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-semibold text-[#1B1D1E]">Ersparnis Arbeitgeber</td>
+              <td class="p-4 text-center text-red-500">0 €</td>
+              <td class="p-4 text-center font-bold text-[#1A6B4A]">~70 € / Monat</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <FinalCTA
+    heading="Jetzt Sachbezug für dein Team einrichten"
+    subheading="In weniger als 15 Minuten startklar. Keine Kreditkarte, kein Jahresvertrag."
+  />
+</Layout>

@@ -1,21 +1,22 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 
-<section class="bg-[#1A6B4A] py-20">
+<section id="roi-calculator" class="bg-[#1A6B4A] py-20">
   <div class="container mx-auto px-6 max-w-4xl text-center">
     <p class="eyebrow text-white/70">DEIN VORTEIL</p>
     <h2 class="text-3xl md:text-[40px] font-bold text-white mt-2 mb-4 leading-tight">
       Berechne dein Sparpotenzial
     </h2>
     <p class="text-white/70 text-lg mb-12 max-w-2xl mx-auto">
-      Finde heraus, wie viel du mit steuerfreien Sachbezügen im Vergleich zu einer klassischen Gehaltserhöhung sparen kannst.
+      Finde heraus, wie viel du mit steuerfreien Sachbezügen im Vergleich zu einer klassischen Gehaltserhöhung sparst.
     </p>
 
     <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-10 text-left">
       <div class="grid md:grid-cols-2 gap-8 mb-8">
         <!-- Slider 1: Employees -->
         <div>
-          <label for="employees" class="block text-sm font-semibold text-white mb-2">
+          <label for="employees" class="block text-sm font-semibold text-white mb-3">
             Anzahl Mitarbeiter: <span id="employees-value" class="text-[#F5A623]">50</span>
           </label>
           <input
@@ -34,7 +35,7 @@
 
         <!-- Slider 2: Budget -->
         <div>
-          <label for="budget" class="block text-sm font-semibold text-white mb-2">
+          <label for="budget" class="block text-sm font-semibold text-white mb-3">
             Monatliches Budget pro Mitarbeiter: <span id="budget-value" class="text-[#F5A623]">50 €</span>
           </label>
           <input
@@ -56,7 +57,7 @@
       <!-- Results -->
       <div class="grid md:grid-cols-3 gap-6 border-t border-white/20 pt-8">
         <div class="text-center">
-          <p class="text-sm text-white/60 mb-1">Monatlicher Netto-Vorteil je Mitarbeiter</p>
+          <p class="text-sm text-white/60 mb-1">Netto-Vorteil je Mitarbeiter / Monat</p>
           <p id="net-benefit" class="text-3xl font-extrabold text-[#F5A623]">50 €</p>
           <p class="text-xs text-white/50 mt-1">steuerfrei & sozialabgabenfrei</p>
         </div>
@@ -68,13 +69,18 @@
         <div class="text-center">
           <p class="text-sm text-white/60 mb-1">Gesamter Jahresvorteil</p>
           <p id="total-benefit" class="text-3xl font-extrabold text-[#4A9B7A]">33.000 €</p>
-          <p class="text-xs text-white/50 mt-1">für dein Unternehmen</p>
+          <p class="text-xs text-white/50 mt-1">für dein gesamtes Unternehmen</p>
         </div>
       </div>
+
+      <!-- Explanation -->
+      <p class="text-xs text-white/40 mt-6 text-center">
+        * Berechnung basiert auf einem durchschnittlichen Steuersatz von 30% und Sozialabgaben von 20%. Individuelle Ergebnisse können abweichen.
+      </p>
     </div>
 
     <div class="mt-8">
-      <a href="/demo/" class="btn-primary">
+      <a href={`${base}demo/`} class="btn-primary">
         Jetzt Demo vereinbaren & mehr sparen
       </a>
     </div>
@@ -94,18 +100,20 @@
     const employees = parseInt(employeesSlider?.value || '50');
     const budget = parseInt(budgetSlider?.value || '50');
 
-    // Calculation logic
-    // Net benefit per employee = budget (tax-free, so full amount)
+    // Net benefit per employee = full budget amount (tax-free)
     const netPerEmployee = budget;
-    // Employer savings vs. gross salary increase: ~40% savings on social contributions
-    const employerSavingsPerEmployee = Math.round(budget * 0.7 * 12);
-    const totalEmployerSavings = employerSavingsPerEmployee * employees;
+    // Employer saves ~19.325% social contributions on gross salary equivalent
+    // To give 50€ net via gross salary, employer needs ~50/0.7 = ~71€ gross
+    // Employer social contributions on that: 71 * 0.2 = ~14€
+    // So employer saves ~14€ per employee per month vs. gross salary raise
+    const employerSavingsPerEmployeePerYear = Math.round(budget * 0.2 * 12);
+    const totalEmployerSavingsPerYear = employerSavingsPerEmployeePerYear * employees;
     const totalAnnualBenefit = budget * employees * 12;
 
     if (employeesValue) employeesValue.textContent = employees.toString();
     if (budgetValue) budgetValue.textContent = `${budget} €`;
     if (netBenefit) netBenefit.textContent = `${netPerEmployee} €`;
-    if (employerSavings) employerSavings.textContent = `${totalEmployerSavings.toLocaleString('de-DE')} €`;
+    if (employerSavings) employerSavings.textContent = `${totalEmployerSavingsPerYear.toLocaleString('de-DE')} €`;
     if (totalBenefit) totalBenefit.textContent = `${totalAnnualBenefit.toLocaleString('de-DE')} €`;
   }
 

@@ -1,0 +1,75 @@
+---
+interface Fact {
+  label: string;
+  value: string;
+  note?: string;
+}
+
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  facts: Fact[];
+  steps: Step[];
+  eligibilityTitle?: string;
+  eligibilityText?: string;
+}
+
+const {
+  facts,
+  steps,
+  eligibilityTitle = 'Wer hat Anspruch?',
+  eligibilityText,
+} = Astro.props;
+---
+
+<!-- Key Facts -->
+<section class="bg-[#F0EDE8] py-16">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-[36px] font-bold text-[#1B1D1E]">Die wichtigsten Fakten auf einen Blick</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {facts.map((fact) => (
+        <div class="bg-white rounded-2xl p-6 text-center border border-[#F0EDE8]">
+          <p class="text-3xl font-extrabold text-[#1A6B4A] mb-1">{fact.value}</p>
+          <p class="text-sm font-semibold text-[#1B1D1E] mb-1">{fact.label}</p>
+          {fact.note && <p class="text-xs text-[#1B1D1E]/50">{fact.note}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="bg-[#FAF9F7] py-16">
+  <div class="container mx-auto px-6 max-w-5xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-[36px] font-bold text-[#1B1D1E]">So funktioniert es mit become.1</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      {steps.map((step) => (
+        <div class="relative">
+          <div class="w-12 h-12 rounded-full bg-[#1A6B4A] text-white font-extrabold text-lg flex items-center justify-center mb-4">
+            {step.number}
+          </div>
+          <h3 class="text-lg font-bold text-[#1B1D1E] mb-2">{step.title}</h3>
+          <p class="text-sm text-[#1B1D1E]/60 leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Eligibility -->
+{eligibilityText && (
+  <section class="bg-[#1A6B4A] py-16">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">{eligibilityTitle}</h2>
+      <p class="text-white/80 text-lg leading-relaxed">{eligibilityText}</p>
+    </div>
+  </section>
+)}

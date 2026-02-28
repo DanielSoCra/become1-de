@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitHero from '../../components/sections/BenefitHero.astro';
+import BenefitDetails from '../../components/sections/BenefitDetails.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const facts = [
+  { value: '600 €', label: 'Jährlicher Freibetrag', note: 'Steuerfrei nach § 3 Nr. 34 EStG' },
+  { value: '50 €', label: 'Monatlicher Vorteil', note: 'Pro Mitarbeiter' },
+  { value: '§ 3 Nr. 34', label: 'Rechtsgrundlage', note: 'Einkommensteuergesetz (EStG)' },
+  { value: '↓ 30%', label: 'Krankheitstage', note: 'Ø Reduktion durch Firmenfitness' },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Fitness-Budget festlegen',
+    description: 'Lege im Admin-Dashboard das jährliche Fitness-Budget pro Mitarbeiter fest – bis zu 600 € steuerfrei.',
+  },
+  {
+    number: '02',
+    title: 'Mitarbeiter wählt Angebot',
+    description: 'Mitarbeiter können aus hunderten von Fitness-Partnern wählen oder ihre eigenen Belege einreichen.',
+  },
+  {
+    number: '03',
+    title: 'Automatische Erstattung',
+    description: 'Belege werden über die become.1 App eingereicht und automatisch erstattet – ohne Papierkram.',
+  },
+];
+---
+
+<Layout
+  title="Firmenfitness – Bis zu 600 € jährlich steuerfrei"
+  description="Biete deinen Mitarbeitern bis zu 600 € jährlich als steuerfreien Firmenfitness-Zuschuss. Für Fitnessstudio, Yoga, Kurse und mehr. Jetzt mit become.1."
+>
+  <BenefitHero
+    eyebrow="BENEFIT: FIRMENFITNESS"
+    title="Firmenfitness: Gesunde Mitarbeiter, gesundes Unternehmen."
+    subtitle="Bis zu 600 € jährlich steuerfrei für Fitnessstudio, Yoga, Sportkurse und mehr. Investiere in die Gesundheit deines Teams – und spare dabei Steuern."
+    tag="Gesundheitsförderung"
+    tagColor="bg-[#1A6B4A] text-white"
+    limit="600 €"
+    limitLabel="jährlich steuerfrei für Fitness & Gesundheit"
+    heroImage={`${base}images/benefit_fitness_hero.webp`}
+    heroImageAlt="Mitarbeiterin beim Yoga im modernen Studio"
+  />
+
+  <BenefitDetails
+    facts={facts}
+    steps={steps}
+    eligibilityTitle="Welche Fitness-Angebote sind förderfähig?"
+    eligibilityText="Der steuerfreie Firmenfitness-Zuschuss nach § 3 Nr. 34 EStG gilt für Maßnahmen zur Gesundheitsförderung, die den allgemeinen Gesundheitszustand verbessern oder der betrieblichen Gesundheitsförderung dienen. Dazu gehören Mitgliedschaften in Fitnessstudios, Yoga- und Pilates-Kurse, Rückenschulungen, Ernährungsberatung und viele weitere Angebote. Der jährliche Freibetrag beträgt 600 € pro Mitarbeiter."
+  />
+
+  <!-- Partner Network -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Förderfähige Fitness-Angebote</h2>
+        <p class="text-[#1B1D1E]/60 mt-2">Maximale Flexibilität für jeden Lebensstil</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: '🏋️', title: 'Fitnessstudio', desc: 'McFit, FitX, Clever Fit und alle anderen Studios.' },
+          { icon: '🧘', title: 'Yoga & Pilates', desc: 'Studios, Online-Kurse und Apps wie Alo Moves.' },
+          { icon: '🏊', title: 'Schwimmen', desc: 'Hallenbäder, Freibäder und Schwimmkurse.' },
+          { icon: '🚴', title: 'Radfahren', desc: 'Spinning-Kurse und Radfahrgruppen.' },
+          { icon: '🥗', title: 'Ernährungsberatung', desc: 'Ernährungskurse und Beratungen.' },
+          { icon: '🧠', title: 'Mental Health', desc: 'Stressmanagement, Meditation und Achtsamkeit.' },
+        ].map((item) => (
+          <div class="bg-white rounded-2xl p-6 border border-[#F0EDE8]">
+            <div class="text-3xl mb-3">{item.icon}</div>
+            <h3 class="font-bold text-[#1B1D1E] mb-2">{item.title}</h3>
+            <p class="text-sm text-[#1B1D1E]/60">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA
+    heading="Jetzt Firmenfitness für dein Team einrichten"
+    subheading="Gesunde Mitarbeiter sind produktivere Mitarbeiter. In weniger als 15 Minuten startklar."
+  />
+</Layout>

@@ -1,65 +1,69 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const navLinks = [
   {
     label: 'Lösungen',
-    href: '/loesungen/',
+    href: `${base}loesungen/`,
     children: [
-      { label: 'Gehaltszusätze', href: '/loesungen/gehaltszusaetze/' },
-      { label: 'Gehaltsumwandlung', href: '/loesungen/gehaltsumwandlung/' },
+      { label: 'Gehaltszusätze', href: `${base}loesungen/gehaltszusaetze/` },
+      { label: 'Gehaltsumwandlung', href: `${base}loesungen/gehaltsumwandlung/` },
     ],
   },
   {
     label: 'Benefits',
-    href: '/benefits/',
+    href: `${base}benefits/`,
     children: [
-      { label: 'Sachbezug', href: '/benefits/sachbezug/' },
-      { label: 'Essenszuschuss', href: '/benefits/essenszuschuss/' },
-      { label: 'Mobilitätsbudget', href: '/benefits/mobilitaetsbudget/' },
-      { label: 'Alle Benefits', href: '/benefits/' },
+      { label: 'Sachbezug', href: `${base}benefits/sachbezug/` },
+      { label: 'Essenszuschuss', href: `${base}benefits/essenszuschuss/` },
+      { label: 'Mobilitätsbudget', href: `${base}benefits/mobilitaetsbudget/` },
+      { label: 'Internetzuschuss', href: `${base}benefits/internetzuschuss/` },
+      { label: 'KiTa-Zuschuss', href: `${base}benefits/kita-zuschuss/` },
+      { label: 'Firmenfitness', href: `${base}benefits/firmenfitness/` },
+      { label: 'Alle Benefits →', href: `${base}benefits/` },
     ],
   },
-  { label: 'Preise', href: '/preise/' },
-  { label: 'Warum become.1?', href: '/warum-wir/' },
+  { label: 'Preise', href: `${base}preise/` },
+  { label: 'Warum become.1?', href: `${base}warum-wir/` },
   {
     label: 'Ressourcen',
-    href: '/ressourcen/',
+    href: `${base}ressourcen/`,
     children: [
-      { label: 'Blog', href: '/blog/' },
-      { label: 'FAQ', href: '/ressourcen/faq/' },
-      { label: 'Datensicherheit', href: '/ressourcen/datensicherheit/' },
+      { label: 'Blog & Artikel', href: `${base}ressourcen/` },
+      { label: 'FAQ', href: `${base}ressourcen/faq/` },
     ],
   },
 ];
 ---
 
-<header class="bg-[#FAF9F7] sticky top-0 z-50 border-b border-[#F0EDE8]">
+<header class="bg-[#FAF9F7]/95 backdrop-blur-sm sticky top-0 z-50 border-b border-[#F0EDE8]">
   <div class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
     <!-- Logo -->
-    <a href="/" class="text-2xl font-extrabold text-[#1B1D1E] tracking-tight">
+    <a href={base} class="text-2xl font-extrabold text-[#1B1D1E] tracking-tight hover:opacity-80 transition-opacity">
       become<span class="text-[#F5A623]">.</span>1
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex items-center space-x-8">
+    <nav class="hidden lg:flex items-center space-x-7">
       {navLinks.map((link) => (
         <div class="relative group">
           <a
             href={link.href}
-            class="text-[#1B1D1E] hover:text-[#1A6B4A] font-medium text-sm transition-colors duration-200 flex items-center gap-1"
+            class="text-[#1B1D1E] hover:text-[#1A6B4A] font-medium text-sm transition-colors duration-200 flex items-center gap-1 py-2"
           >
             {link.label}
             {link.children && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
               </svg>
             )}
           </a>
           {link.children && (
-            <div class="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-[#F0EDE8] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-xl border border-[#F0EDE8] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 py-1">
               {link.children.map((child) => (
                 <a
                   href={child.href}
-                  class="block px-4 py-3 text-sm text-[#1B1D1E] hover:bg-[#F0EDE8] hover:text-[#1A6B4A] first:rounded-t-xl last:rounded-b-xl transition-colors duration-150"
+                  class="block px-4 py-2.5 text-sm text-[#1B1D1E]/80 hover:bg-[#F0EDE8] hover:text-[#1A6B4A] transition-colors duration-100"
                 >
                   {child.label}
                 </a>
@@ -72,8 +76,8 @@ const navLinks = [
 
     <!-- CTA Buttons -->
     <div class="hidden lg:flex items-center space-x-4">
-      <a href="https://app.become1.de" class="text-sm font-medium text-[#1B1D1E] hover:text-[#1A6B4A] transition-colors">Login</a>
-      <a href="/demo/" class="btn-primary text-sm py-3 px-6">Kostenlose Demo</a>
+      <a href="https://app.become1.de" class="text-sm font-medium text-[#1B1D1E]/70 hover:text-[#1A6B4A] transition-colors">Login</a>
+      <a href={`${base}demo/`} class="btn-primary text-sm py-2.5 px-5">Kostenlose Demo</a>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -104,7 +108,7 @@ const navLinks = [
             {link.label}
           </a>
           {link.children && (
-            <div class="pl-4 space-y-1 mt-1">
+            <div class="pl-4 space-y-1 mt-1 mb-2">
               {link.children.map((child) => (
                 <a
                   href={child.href}
@@ -118,7 +122,7 @@ const navLinks = [
         </div>
       ))}
       <div class="pt-4 space-y-3">
-        <a href="/demo/" class="btn-primary w-full text-center block">Kostenlose Demo vereinbaren</a>
+        <a href={`${base}demo/`} class="btn-primary w-full text-center block">Kostenlose Demo vereinbaren</a>
         <a href="https://app.become1.de" class="btn-secondary w-full text-center block">Login</a>
       </div>
     </div>

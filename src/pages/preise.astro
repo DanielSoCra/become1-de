@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import FinalCTA from '../components/sections/FinalCTA.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const plans = [
   {
     name: 'Starter',
@@ -16,7 +18,7 @@ const plans = [
       'DSGVO-konform',
     ],
     cta: 'Jetzt starten',
-    ctaHref: '/demo/',
+    ctaHref: `${base}demo/`,
     highlighted: false,
   },
   {
@@ -33,7 +35,7 @@ const plans = [
       'Onboarding-Begleitung',
     ],
     cta: 'Kostenlose Demo',
-    ctaHref: '/demo/',
+    ctaHref: `${base}demo/`,
     highlighted: true,
     badge: 'Beliebteste Wahl',
   },
@@ -50,15 +52,38 @@ const plans = [
       'Schulungen & Workshops',
     ],
     cta: 'Kontakt aufnehmen',
-    ctaHref: '/demo/',
+    ctaHref: `${base}demo/`,
     highlighted: false,
+  },
+];
+
+const pricingFaqs = [
+  {
+    q: 'Gibt es eine kostenlose Testphase?',
+    a: 'Ja, du kannst become.1 30 Tage lang kostenlos testen – ohne Kreditkarte und ohne Verpflichtung. Vereinbare einfach eine Demo und wir richten deinen Test-Account ein.',
+  },
+  {
+    q: 'Gibt es eine Mindestvertragslaufzeit?',
+    a: 'Nein, become.1 hat keine Mindestvertragslaufzeit. Du kannst monatlich kündigen. Wir sind überzeugt, dass du bleibst, weil du zufrieden bist – nicht weil du musst.',
+  },
+  {
+    q: 'Wie funktioniert die Abrechnung?',
+    a: 'Die Abrechnung erfolgt monatlich pro aktivem Mitarbeiter. Du zahlst nur für Mitarbeiter, die tatsächlich Benefits nutzen. Keine versteckten Kosten, keine Einrichtungsgebühren.',
+  },
+  {
+    q: 'Was ist im Preis enthalten?',
+    a: 'Im Preis enthalten sind die Plattform-Nutzung, das Admin-Dashboard, die Mitarbeiter-App und der Support. Die Benefit-Beträge selbst (z.B. 50 € Sachbezug pro Mitarbeiter) kommen on top und werden direkt von dir als Arbeitgeber getragen.',
+  },
+  {
+    q: 'Kann ich den Plan jederzeit wechseln?',
+    a: 'Ja, du kannst jederzeit auf einen höheren oder niedrigeren Plan wechseln. Der Wechsel ist sofort wirksam und wird anteilig abgerechnet.',
   },
 ];
 ---
 
 <Layout
-  title="Preise"
-  description="Transparente Preise für steuerfreie Mitarbeiter-Benefits. Starter ab 4,90 € pro Mitarbeiter/Monat. Jetzt kostenlose Demo vereinbaren."
+  title="Preise – Transparente Preise für steuerfreie Benefits"
+  description="Transparente Preise für steuerfreie Mitarbeiter-Benefits. Starter ab 4,90 € pro Mitarbeiter/Monat. 30 Tage kostenlos testen."
 >
   <!-- Hero -->
   <section class="bg-[#FAF9F7] py-20">
@@ -70,6 +95,12 @@ const plans = [
       <p class="text-lg text-[#1B1D1E]/60 max-w-2xl mx-auto">
         Kein verstecktes Kleingedrucktes. Kein Jahresvertrag. Nur echte Benefits für dein Team.
       </p>
+      <div class="mt-6 inline-flex items-center gap-2 bg-[#1A6B4A]/10 text-[#1A6B4A] font-semibold text-sm px-4 py-2 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        30 Tage kostenlos testen – keine Kreditkarte erforderlich
+      </div>
     </div>
   </section>
 
@@ -112,21 +143,78 @@ const plans = [
     </div>
   </section>
 
-  <!-- FAQ Teaser -->
+  <!-- Feature Comparison -->
   <section class="bg-[#FAF9F7] py-16">
-    <div class="container mx-auto px-6 max-w-3xl text-center">
-      <h2 class="text-2xl font-bold text-[#1B1D1E] mb-4">Noch Fragen zu den Preisen?</h2>
-      <p class="text-[#1B1D1E]/60 mb-6">Schau in unsere FAQ oder vereinbare direkt eine kostenlose Demo mit einem unserer Experten.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/ressourcen/faq/" class="btn-secondary">Zur FAQ</a>
-        <a href="/demo/" class="btn-primary">Demo vereinbaren</a>
+    <div class="container mx-auto px-6 max-w-5xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Detaillierter Funktionsvergleich</h2>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden border border-[#F0EDE8]">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-[#F0EDE8]">
+              <th class="text-left p-4 font-semibold text-[#1B1D1E]">Funktion</th>
+              <th class="text-center p-4 font-semibold text-[#1B1D1E]">Starter</th>
+              <th class="text-center p-4 font-semibold text-[#1A6B4A]">Professional</th>
+              <th class="text-center p-4 font-semibold text-[#1B1D1E]">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#F0EDE8]">
+            {[
+              ['Anzahl Mitarbeiter', 'bis 25', 'Unbegrenzt', 'Unbegrenzt'],
+              ['Anzahl Benefits', '3', '15+', '15+ Custom'],
+              ['Admin-Dashboard', '✓', '✓', '✓'],
+              ['Mitarbeiter-App', '–', '✓', '✓'],
+              ['Lohnbuchhaltungs-Integration', '–', '✓', '✓'],
+              ['DSGVO-Konformität', '✓', '✓', '✓'],
+              ['E-Mail Support', '✓', '✓', '✓'],
+              ['Prioritäts-Support', '–', '✓', '✓'],
+              ['Dedizierter Account Manager', '–', '–', '✓'],
+              ['SLA-Garantie', '–', '–', '✓'],
+            ].map(([feature, starter, pro, enterprise]) => (
+              <tr class="hover:bg-[#FAF9F7]/50">
+                <td class="p-4 text-[#1B1D1E]/70">{feature}</td>
+                <td class="p-4 text-center text-[#1B1D1E]/60">{starter}</td>
+                <td class="p-4 text-center font-semibold text-[#1A6B4A]">{pro}</td>
+                <td class="p-4 text-center text-[#1B1D1E]/60">{enterprise}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-3xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Häufige Fragen zu den Preisen</h2>
+      </div>
+      <div class="space-y-3">
+        {pricingFaqs.map((faq) => (
+          <details class="bg-white rounded-2xl border border-[#F0EDE8] group">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <span class="font-semibold text-[#1B1D1E] pr-4">{faq.q}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#1A6B4A] flex-shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6">
+              <p class="text-[#1B1D1E]/70 leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href={`${base}ressourcen/faq/`} class="btn-secondary">Alle FAQ ansehen</a>
       </div>
     </div>
   </section>
 
   <FinalCTA
     heading="Bereit loszulegen?"
-    subheading="Überzeuge dich selbst. Kostenlose Demo, keine Kreditkarte erforderlich."
-    ctaText="Kostenlose Demo vereinbaren"
+    subheading="30 Tage kostenlos testen. Keine Kreditkarte, kein Jahresvertrag."
+    ctaText="Kostenlos testen"
   />
 </Layout>

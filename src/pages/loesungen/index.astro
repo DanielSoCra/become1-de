@@ -1,0 +1,92 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const solutions = [
+  {
+    title: 'Gehaltszusätze',
+    subtitle: 'Arbeitgeber zahlt extra',
+    description: 'Biete deinen Mitarbeitern steuerfreie Extras on top – ohne dass ihr Budget oder die Lohnnebenkosten explodieren. Der effizienteste Weg, echte Wertschätzung zu zeigen.',
+    href: `${base}loesungen/gehaltszusaetze/`,
+    benefits: ['Sachbezug bis 50 €/Monat', 'Essenszuschuss bis 7,50 €/Tag', 'Mobilitätsbudget bis 50 €/Monat'],
+    tag: 'Beliebt',
+    tagColor: 'bg-[#F5A623] text-[#1B1D1E]',
+  },
+  {
+    title: 'Gehaltsumwandlung',
+    subtitle: 'Mitarbeiter wandelt um',
+    description: 'Wandle Bruttolohn in steueroptimierte Sachleistungen um. Mitarbeiter sparen Steuern und Sozialabgaben, Arbeitgeber sparen Lohnnebenkosten.',
+    href: `${base}loesungen/gehaltsumwandlung/`,
+    benefits: ['Betriebliche Altersvorsorge', 'Dienstfahrrad / E-Bike', 'Firmenwagen'],
+    tag: 'Steueroptimiert',
+    tagColor: 'bg-[#1A6B4A] text-white',
+  },
+];
+---
+
+<Layout
+  title="Lösungen – Steuerfreie Benefits für jeden Bedarf"
+  description="Entdecke die become.1 Lösungen für steuerfreie Mitarbeiter-Benefits: Gehaltszusätze und Gehaltsumwandlung. Jetzt kostenlose Demo vereinbaren."
+>
+  <!-- Hero -->
+  <section class="bg-[#FAF9F7] py-20">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <p class="eyebrow">LÖSUNGEN</p>
+      <h1 class="text-4xl md:text-[56px] font-extrabold text-[#1B1D1E] mt-2 mb-4 leading-tight">
+        Zwei Wege zu mehr Netto
+      </h1>
+      <p class="text-lg text-[#1B1D1E]/60 max-w-2xl mx-auto">
+        Ob du deinen Mitarbeitern etwas on top geben oder bestehende Gehälter optimieren möchtest – become.1 hat die passende Lösung für jedes Unternehmen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-8">
+        {solutions.map((sol) => (
+          <div class="bg-white rounded-3xl p-8 border border-[#F0EDE8] hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-3 mb-4">
+              <span class={`text-xs font-bold px-3 py-1.5 rounded-full ${sol.tagColor}`}>{sol.tag}</span>
+              <span class="text-xs text-[#1B1D1E]/50">{sol.subtitle}</span>
+            </div>
+            <h2 class="text-2xl font-bold text-[#1B1D1E] mb-3">{sol.title}</h2>
+            <p class="text-[#1B1D1E]/60 leading-relaxed mb-6">{sol.description}</p>
+            <ul class="space-y-2 mb-8">
+              {sol.benefits.map((b) => (
+                <li class="flex items-center gap-2.5 text-sm text-[#1B1D1E]/70">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#1A6B4A] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <a href={sol.href} class="btn-primary w-full text-center block">
+              Mehr erfahren →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Not Sure? -->
+  <section class="bg-[#FAF9F7] py-16">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <h2 class="text-3xl font-bold text-[#1B1D1E] mb-4">Nicht sicher, was am besten passt?</h2>
+      <p class="text-[#1B1D1E]/60 mb-8 max-w-2xl mx-auto">
+        In einer kostenlosen Demo analysieren wir gemeinsam dein Unternehmen und empfehlen die optimale Kombination aus Gehaltszusätzen und Gehaltsumwandlung.
+      </p>
+      <a href={`${base}demo/`} class="btn-primary">Kostenlose Beratung vereinbaren</a>
+    </div>
+  </section>
+
+  <FinalCTA
+    heading="Bereit, die beste Lösung für dein Team zu finden?"
+    subheading="Unsere Experten beraten dich kostenlos und unverbindlich."
+  />
+</Layout>

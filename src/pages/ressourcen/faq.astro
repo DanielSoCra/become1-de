@@ -1,0 +1,140 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faqs = [
+  {
+    category: 'Allgemein',
+    questions: [
+      {
+        q: 'Was ist become.1?',
+        a: 'become.1 ist eine All-in-One-Plattform für steuerfreie Mitarbeiter-Benefits. Wir helfen Unternehmen, ihren Mitarbeitern steueroptimierte Gehaltszusätze und Gehaltsumwandlungen anzubieten – einfach, rechtssicher und vollautomatisch.',
+      },
+      {
+        q: 'Für welche Unternehmensgrößen ist become.1 geeignet?',
+        a: 'become.1 ist für Unternehmen jeder Größe geeignet – von 5 bis 5.000 Mitarbeitern. Unsere Starter-Tarife beginnen bei kleinen Teams, während unser Enterprise-Paket individuelle Lösungen für große Unternehmen bietet.',
+      },
+      {
+        q: 'Wie lange dauert die Einrichtung?',
+        a: 'Die Einrichtung dauert in der Regel weniger als 15 Minuten. Du erstellst ein Konto, lädst deine Mitarbeiter ein und wählst die gewünschten Benefits aus. Unsere Onboarding-Experten begleiten dich dabei.',
+      },
+    ],
+  },
+  {
+    category: 'Benefits & Steuern',
+    questions: [
+      {
+        q: 'Welche Benefits sind steuerfrei?',
+        a: 'Zu den beliebtesten steuerfreien Benefits gehören: Sachbezug (bis 50 €/Monat), Essenszuschuss (bis 7,50 €/Tag), Mobilitätsbudget (bis 50 €/Monat), Internetzuschuss (bis 50 €/Monat), KiTa-Zuschuss (unbegrenzt), Firmenfitness (bis 600 €/Jahr) und Erholungsbeihilfe (bis 156 €/Jahr).',
+      },
+      {
+        q: 'Kann ich mehrere Benefits kombinieren?',
+        a: 'Ja, du kannst mehrere Benefits gleichzeitig anbieten. Die Freibeträge sind unabhängig voneinander. So kann ein Mitarbeiter gleichzeitig den Sachbezug (50 €), den Essenszuschuss (~165 €) und das Mobilitätsbudget (50 €) erhalten.',
+      },
+      {
+        q: 'Was passiert, wenn sich die Steuergesetze ändern?',
+        a: 'Unser Rechtsteam überwacht kontinuierlich alle steuerrechtlichen Änderungen. Wenn sich Gesetze ändern, passen wir unsere Plattform automatisch an und informieren dich proaktiv. Du musst dich um nichts kümmern.',
+      },
+    ],
+  },
+  {
+    category: 'Technik & Integration',
+    questions: [
+      {
+        q: 'Welche Lohnbuchhaltungssysteme werden unterstützt?',
+        a: 'become.1 integriert sich nahtlos mit über 40 Lohnbuchhaltungssystemen, darunter DATEV, Lexware, SAP, Sage und viele weitere. Die Synchronisierung erfolgt vollautomatisch.',
+      },
+      {
+        q: 'Gibt es eine Mitarbeiter-App?',
+        a: 'Ja, become.1 bietet eine intuitive Mitarbeiter-App für iOS und Android. Mitarbeiter können ihre Benefits verwalten, Belege einreichen und ihren Kontostand einsehen.',
+      },
+      {
+        q: 'Wie sicher sind die Daten?',
+        a: 'become.1 ist vollständig DSGVO-konform und speichert alle Daten auf deutschen Servern. Wir verwenden modernste Verschlüsselungstechnologien und führen regelmäßige Sicherheitsaudits durch.',
+      },
+    ],
+  },
+  {
+    category: 'Preise & Verträge',
+    questions: [
+      {
+        q: 'Wie funktioniert die Abrechnung?',
+        a: 'Die Abrechnung erfolgt monatlich pro aktivem Mitarbeiter. Du zahlst nur für Mitarbeiter, die tatsächlich Benefits nutzen. Es gibt keine versteckten Kosten oder Einrichtungsgebühren.',
+      },
+      {
+        q: 'Gibt es eine Mindestvertragslaufzeit?',
+        a: 'Nein, become.1 hat keine Mindestvertragslaufzeit. Du kannst monatlich kündigen. Wir sind überzeugt, dass du bleibst, weil du zufrieden bist – nicht weil du musst.',
+      },
+      {
+        q: 'Gibt es eine kostenlose Testphase?',
+        a: 'Ja, du kannst become.1 30 Tage lang kostenlos testen – ohne Kreditkarte und ohne Verpflichtung. Vereinbare einfach eine Demo und wir richten deinen Test-Account ein.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="FAQ – Häufige Fragen zu become.1"
+  description="Antworten auf die häufigsten Fragen zu become.1, steuerfreien Benefits, Preisen und der Einrichtung. Finde schnell die Antwort, die du suchst."
+>
+  <!-- Hero -->
+  <section class="bg-[#FAF9F7] py-20">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <p class="eyebrow">FAQ</p>
+      <h1 class="text-4xl md:text-[56px] font-extrabold text-[#1B1D1E] mt-2 mb-4 leading-tight">
+        Häufig gestellte Fragen
+      </h1>
+      <p class="text-lg text-[#1B1D1E]/60 max-w-2xl mx-auto">
+        Alles, was du über become.1 und steuerfreie Benefits wissen musst.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="space-y-12">
+        {faqs.map((section) => (
+          <div>
+            <h2 class="text-xl font-bold text-[#1A6B4A] mb-6 pb-2 border-b border-[#1A6B4A]/20">{section.category}</h2>
+            <div class="space-y-4">
+              {section.questions.map((faq) => (
+                <details class="bg-white rounded-2xl border border-[#F0EDE8] group">
+                  <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                    <span class="font-semibold text-[#1B1D1E] pr-4">{faq.q}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#1A6B4A] flex-shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <div class="px-6 pb-6">
+                    <p class="text-[#1B1D1E]/70 leading-relaxed">{faq.a}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Still Questions? -->
+  <section class="bg-[#FAF9F7] py-16">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <h2 class="text-3xl font-bold text-[#1B1D1E] mb-4">Noch Fragen?</h2>
+      <p class="text-[#1B1D1E]/60 mb-8">Unser Team antwortet im Schnitt in unter 2 Stunden.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`${base}demo/`} class="btn-primary">Demo vereinbaren</a>
+        <a href="mailto:hallo@become1.de" class="btn-secondary">E-Mail schreiben</a>
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA
+    heading="Überzeugt? Dann starten wir."
+    subheading="Vereinbare jetzt deine kostenlose Demo und sieh become.1 in Aktion."
+  />
+</Layout>

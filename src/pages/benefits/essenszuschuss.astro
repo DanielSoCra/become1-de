@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitHero from '../../components/sections/BenefitHero.astro';
+import BenefitDetails from '../../components/sections/BenefitDetails.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const facts = [
+  { value: '7,50 €', label: 'Täglicher Freibetrag', note: 'Pro Arbeitstag steuerfrei' },
+  { value: '~165 €', label: 'Monatlicher Vorteil', note: 'Bei 22 Arbeitstagen' },
+  { value: '§ 8 Abs. 2', label: 'Rechtsgrundlage', note: 'EStG i.V.m. SvEV' },
+  { value: '0 €', label: 'Lohnsteuer', note: 'Komplett steuerfrei' },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Essenszuschuss aktivieren',
+    description: 'Aktiviere den Essenszuschuss in deinem Admin-Dashboard. Du legst fest, ob du täglich oder monatlich abrechnest.',
+  },
+  {
+    number: '02',
+    title: 'Mitarbeiter bestellen oder zahlen',
+    description: 'Mitarbeiter können über die become.1 App Mahlzeiten bei Partnern bestellen oder ihre Belege für eigene Einkäufe einreichen.',
+  },
+  {
+    number: '03',
+    title: 'Automatische Abrechnung',
+    description: 'Die Abrechnung erfolgt vollautomatisch. Der Zuschuss wird direkt mit dem Lohn verrechnet – ohne Papierkram.',
+  },
+];
+---
+
+<Layout
+  title="Essenszuschuss – Bis zu 7,50 € täglich steuerfrei"
+  description="Biete deinen Mitarbeitern bis zu 7,50 € täglich als steuerfreien Essenszuschuss. Für Kantine, Restaurant oder Lieferdienst. Jetzt mit become.1."
+>
+  <BenefitHero
+    eyebrow="BENEFIT: ESSENSZUSCHUSS"
+    title="Essenszuschuss: Jeden Tag ein bisschen mehr Netto."
+    subtitle="Bis zu 7,50 € täglich steuerfrei – für Mahlzeiten in der Kantine, beim Lieblingsrestaurant oder beim Lieferdienst. Ein Benefit, den deine Mitarbeiter täglich spüren."
+    tag="Täglich spürbar"
+    tagColor="bg-[#F5A623]"
+    limit="7,50 €"
+    limitLabel="täglich steuerfrei pro Arbeitstag"
+    heroImage={`${base}images/benefit_essenszuschuss_hero.webp`}
+    heroImageAlt="Mitarbeiterin genießt Mittagessen mit Essenszuschuss"
+  />
+
+  <BenefitDetails
+    facts={facts}
+    steps={steps}
+    eligibilityTitle="Für welche Mahlzeiten gilt der Zuschuss?"
+    eligibilityText="Der Essenszuschuss gilt für alle Mahlzeiten an Arbeitstagen – egal ob in der Betriebskantine, im Restaurant, beim Lieferdienst oder im Supermarkt. Voraussetzung ist, dass die Mahlzeit an einem Arbeitstag eingenommen wird. Der Freibetrag von 7,50 € gilt pro Mahlzeit und Arbeitstag und kann nicht auf andere Tage übertragen werden."
+  />
+
+  <!-- Use Cases -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Wo kann der Essenszuschuss eingelöst werden?</h2>
+        <p class="text-[#1B1D1E]/60 mt-2">Maximale Flexibilität für deine Mitarbeiter</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { icon: '🏢', title: 'Betriebskantine', desc: 'Direkte Abrechnung mit der Kantine über become.1.' },
+          { icon: '🍽️', title: 'Restaurants', desc: 'Über 50.000 Partnerbetriebe in ganz Deutschland.' },
+          { icon: '🛵', title: 'Lieferdienste', desc: 'Lieferando, HelloFresh und weitere Partner.' },
+          { icon: '🛒', title: 'Supermärkte', desc: 'Für Lebensmittel und Zutaten zum Selbstkochen.' },
+        ].map((item) => (
+          <div class="bg-white rounded-2xl p-6 text-center border border-[#F0EDE8]">
+            <div class="text-4xl mb-3">{item.icon}</div>
+            <h3 class="font-bold text-[#1B1D1E] mb-2">{item.title}</h3>
+            <p class="text-sm text-[#1B1D1E]/60">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <FinalCTA
+    heading="Jetzt Essenszuschuss für dein Team einrichten"
+    subheading="In weniger als 15 Minuten startklar. Keine Kreditkarte, kein Jahresvertrag."
+  />
+</Layout>

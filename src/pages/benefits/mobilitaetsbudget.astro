@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitHero from '../../components/sections/BenefitHero.astro';
+import BenefitDetails from '../../components/sections/BenefitDetails.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const facts = [
+  { value: '50 €', label: 'Monatlicher Freibetrag', note: 'Steuerfrei & sozialabgabenfrei' },
+  { value: '600 €', label: 'Jährlicher Vorteil', note: 'Pro Mitarbeiter' },
+  { value: '§ 3 Nr. 15', label: 'Rechtsgrundlage', note: 'Einkommensteuergesetz (EStG)' },
+  { value: '100%', label: 'Nachhaltig', note: 'Fördert grüne Mobilität' },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Budget festlegen',
+    description: 'Lege im Admin-Dashboard fest, wie hoch das monatliche Mobilitätsbudget pro Mitarbeiter sein soll – bis zu 50 € steuerfrei.',
+  },
+  {
+    number: '02',
+    title: 'Mitarbeiter wählt Mobilitätsform',
+    description: 'Jeder Mitarbeiter entscheidet selbst, wie er sein Budget nutzt: ÖPNV-Ticket, E-Bike-Leasing, Carsharing oder Tankzuschuss.',
+  },
+  {
+    number: '03',
+    title: 'Automatische Abrechnung',
+    description: 'Die Nutzung wird über die become.1 App dokumentiert und automatisch mit der Lohnbuchhaltung abgerechnet.',
+  },
+];
+---
+
+<Layout
+  title="Mobilitätsbudget – Bis zu 50 € monatlich steuerfrei"
+  description="Biete deinen Mitarbeitern bis zu 50 € monatlich als steuerfreies Mobilitätsbudget. Für ÖPNV, E-Bike, Carsharing und mehr. Jetzt mit become.1."
+>
+  <BenefitHero
+    eyebrow="BENEFIT: MOBILITÄTSBUDGET"
+    title="Mobilitätsbudget: Flexibel unterwegs – auf Kosten des Chefs."
+    subtitle="Bis zu 50 € monatlich steuerfrei für den Weg zur Arbeit. Ob Bahn, Bus, E-Bike oder Carsharing – deine Mitarbeiter entscheiden selbst, wie sie ankommen."
+    tag="Nachhaltig & flexibel"
+    tagColor="bg-[#1A6B4A] text-white"
+    limit="50 €"
+    limitLabel="monatlich steuerfrei für Mobilität"
+    heroImage={`${base}images/benefit_mobilitaet_hero.webp`}
+    heroImageAlt="Mitarbeiterin auf E-Bike in der Stadt"
+  />
+
+  <BenefitDetails
+    facts={facts}
+    steps={steps}
+    eligibilityTitle="Welche Mobilitätsformen sind förderfähig?"
+    eligibilityText="Das steuerfreie Mobilitätsbudget nach § 3 Nr. 15 EStG gilt für öffentliche Verkehrsmittel (ÖPNV, Bahn, Bus), E-Bikes und Fahrräder sowie Carsharing-Dienste. Wichtig: Das Budget muss für den Weg zwischen Wohnung und erster Tätigkeitsstätte genutzt werden. Ein Tankzuschuss für private PKW ist nicht nach dieser Regelung steuerfrei, kann aber als separater Sachbezug gewährt werden."
+  />
+
+  <!-- Mobility Options Grid -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Alle förderfähigen Mobilitätsformen</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: '🚇', title: 'ÖPNV & Bahn', desc: 'Deutschlandticket, Monatskarten, Einzelfahrten – alles steuerfrei bis 50 €/Monat.' },
+          { icon: '🚲', title: 'E-Bike & Fahrrad', desc: 'Leasing oder Kauf eines E-Bikes oder Fahrrads für den Arbeitsweg.' },
+          { icon: '🚗', title: 'Carsharing', desc: 'Nutzung von Carsharing-Diensten wie SHARE NOW, Sixt oder Stadtmobil.' },
+          { icon: '🛴', title: 'E-Scooter', desc: 'Nutzung von E-Scooter-Diensten für die letzte Meile.' },
+          { icon: '🚌', title: 'Fernbus', desc: 'FlixBus und andere Fernbusanbieter für längere Arbeitswege.' },
+          { icon: '✈️', title: 'Flug (Dienstreise)', desc: 'Unter bestimmten Bedingungen auch für Dienstreisen nutzbar.' },
+        ].map((item) => (
+          <div class="bg-white rounded-2xl p-6 border border-[#F0EDE8]">
+            <div class="text-3xl mb-3">{item.icon}</div>
+            <h3 class="font-bold text-[#1B1D1E] mb-2">{item.title}</h3>
+            <p class="text-sm text-[#1B1D1E]/60">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <FinalCTA
+    heading="Jetzt Mobilitätsbudget für dein Team einrichten"
+    subheading="Nachhaltig, flexibel und steuerfrei. In weniger als 15 Minuten startklar."
+  />
+</Layout>

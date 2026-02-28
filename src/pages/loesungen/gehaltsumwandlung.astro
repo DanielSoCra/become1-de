@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const examples = [
+  {
+    title: 'Betriebliche Altersvorsorge',
+    saving: '~80 €',
+    desc: 'Monatliche Ersparnis bei 200 € Entgeltumwandlung (Steuer- und Sozialabgabenersparnis kombiniert).',
+    href: `${base}benefits/bav/`,
+  },
+  {
+    title: 'Dienstfahrrad (Bike-Leasing)',
+    saving: '~50 €',
+    desc: 'Monatliche Ersparnis bei einem 150 € Leasingbetrag für ein E-Bike oder Fahrrad.',
+    href: `${base}benefits/`,
+  },
+  {
+    title: 'Firmenwagen',
+    saving: 'Individuell',
+    desc: 'Steueroptimierte Nutzung eines Firmenwagens statt Gehaltserhöhung.',
+    href: `${base}demo/`,
+  },
+];
+---
+
+<Layout
+  title="Gehaltsumwandlung – Mehr Netto durch smarte Umwandlung"
+  description="Gehaltsumwandlung mit become.1: Wandle Bruttolohn in steueroptimierte Benefits um. BAV, Dienstfahrrad und mehr. Jetzt kostenlose Demo vereinbaren."
+>
+  <!-- Hero -->
+  <section class="bg-[#FAF9F7] py-20">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="eyebrow">LÖSUNGEN: GEHALTSUMWANDLUNG</p>
+          <h1 class="text-4xl md:text-[52px] font-extrabold text-[#1B1D1E] mt-2 mb-5 leading-tight">
+            Gehaltsumwandlung: Mehr Netto vom Brutto – für alle.
+          </h1>
+          <p class="text-lg text-[#1B1D1E]/60 mb-8 leading-relaxed">
+            Bei der Gehaltsumwandlung verzichtet der Mitarbeiter auf einen Teil seines Bruttogehalts und erhält dafür steueroptimierte Sachleistungen. Das Ergebnis: Mehr Netto für den Mitarbeiter, weniger Lohnnebenkosten für den Arbeitgeber.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={`${base}demo/`} class="btn-primary">Kostenlose Demo vereinbaren</a>
+            <a href={`${base}loesungen/gehaltszusaetze/`} class="btn-secondary">Gehaltszusätze ansehen</a>
+          </div>
+        </div>
+        <div class="bg-[#F0EDE8] rounded-3xl p-8">
+          <h3 class="font-bold text-[#1B1D1E] mb-6 text-lg">Wie Gehaltsumwandlung funktioniert</h3>
+          <div class="space-y-4">
+            {[
+              { step: '1', text: 'Mitarbeiter und Arbeitgeber vereinbaren eine Gehaltsumwandlung.' },
+              { step: '2', text: 'Ein Teil des Bruttogehalts wird in eine steueroptimierte Sachleistung umgewandelt.' },
+              { step: '3', text: 'Mitarbeiter zahlt weniger Steuern und Sozialabgaben.' },
+              { step: '4', text: 'Arbeitgeber spart Lohnnebenkosten und gibt diese als Zuschuss weiter.' },
+            ].map((item) => (
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-full bg-[#1A6B4A] text-white font-bold text-sm flex items-center justify-center flex-shrink-0">
+                  {item.step}
+                </div>
+                <p class="text-sm text-[#1B1D1E]/70 leading-relaxed pt-1">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Difference -->
+  <section class="bg-[#1A6B4A] py-16">
+    <div class="container mx-auto px-6 max-w-5xl text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Gehaltsumwandlung vs. Gehaltszusatz</h2>
+      <p class="text-white/80 text-lg mb-8 max-w-3xl mx-auto">
+        Beide Modelle sparen Steuern – aber auf unterschiedliche Weise. Bei Gehaltszusätzen zahlt der Arbeitgeber <em>zusätzlich</em> zum Gehalt. Bei der Gehaltsumwandlung wird ein Teil des bestehenden Gehalts umgewandelt.
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 text-left">
+        <div class="bg-white/10 rounded-2xl p-6">
+          <h3 class="font-bold text-white mb-2">Gehaltszusatz (AG zahlt extra)</h3>
+          <ul class="space-y-2 text-white/70 text-sm">
+            <li>✓ Kein Lohnverzicht für Mitarbeiter</li>
+            <li>✓ Zusätzlicher Benefit on top</li>
+            <li>✓ Höhere Mitarbeiterzufriedenheit</li>
+            <li>✓ Bis zu 50 € / Monat steuerfrei</li>
+          </ul>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-6">
+          <h3 class="font-bold text-white mb-2">Gehaltsumwandlung (MA wandelt um)</h3>
+          <ul class="space-y-2 text-white/70 text-sm">
+            <li>✓ Kein Mehraufwand für Arbeitgeber</li>
+            <li>✓ Mitarbeiter spart Steuern & Abgaben</li>
+            <li>✓ Höhere Beträge möglich (z.B. BAV)</li>
+            <li>✓ Gesetzlicher AG-Zuschuss von 15%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section class="bg-[#FAF9F7] py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#1B1D1E]">Beliebte Gehaltsumwandlungs-Modelle</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {examples.map((ex) => (
+          <a href={ex.href} class="bg-white rounded-2xl p-8 border border-[#F0EDE8] hover:shadow-md transition-shadow group">
+            <p class="text-3xl font-extrabold text-[#1A6B4A] mb-1">{ex.saving}</p>
+            <p class="text-xs text-[#1B1D1E]/50 mb-3">Monatliche Ersparnis</p>
+            <h3 class="font-bold text-[#1B1D1E] mb-2 group-hover:text-[#1A6B4A] transition-colors">{ex.title}</h3>
+            <p class="text-sm text-[#1B1D1E]/60 leading-relaxed">{ex.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Note -->
+  <section class="bg-[#F0EDE8] py-12">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="bg-white rounded-2xl p-8 border border-[#F0EDE8]">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-[#1A6B4A]/10 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#1A6B4A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-[#1B1D1E] mb-2">Rechtssicher mit become.1</h3>
+            <p class="text-sm text-[#1B1D1E]/70 leading-relaxed">
+              Gehaltsumwandlung ist rechtlich komplex – von der korrekten Vereinbarung bis zur Lohnbuchhaltungsintegration. become.1 übernimmt die gesamte rechtliche und administrative Abwicklung. Unsere Rechtsexperten überwachen kontinuierlich alle steuerrechtlichen Änderungen und halten dich immer compliant.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <FinalCTA
+    heading="Jetzt Gehaltsumwandlung einrichten"
+    subheading="Unsere Experten zeigen dir in einer kostenlosen Demo, welches Modell am besten zu deinem Unternehmen passt."
+  />
+</Layout>
