@@ -1,0 +1,115 @@
+---
+---
+
+<section class="bg-[#1A6B4A] py-20">
+  <div class="container mx-auto px-6 max-w-4xl text-center">
+    <p class="eyebrow text-white/70">DEIN VORTEIL</p>
+    <h2 class="text-3xl md:text-[40px] font-bold text-white mt-2 mb-4 leading-tight">
+      Berechne dein Sparpotenzial
+    </h2>
+    <p class="text-white/70 text-lg mb-12 max-w-2xl mx-auto">
+      Finde heraus, wie viel du mit steuerfreien Sachbezügen im Vergleich zu einer klassischen Gehaltserhöhung sparen kannst.
+    </p>
+
+    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-10 text-left">
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <!-- Slider 1: Employees -->
+        <div>
+          <label for="employees" class="block text-sm font-semibold text-white mb-2">
+            Anzahl Mitarbeiter: <span id="employees-value" class="text-[#F5A623]">50</span>
+          </label>
+          <input
+            type="range"
+            id="employees"
+            min="1"
+            max="500"
+            value="50"
+            class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#F5A623]"
+          />
+          <div class="flex justify-between text-xs text-white/50 mt-1">
+            <span>1</span>
+            <span>500</span>
+          </div>
+        </div>
+
+        <!-- Slider 2: Budget -->
+        <div>
+          <label for="budget" class="block text-sm font-semibold text-white mb-2">
+            Monatliches Budget pro Mitarbeiter: <span id="budget-value" class="text-[#F5A623]">50 €</span>
+          </label>
+          <input
+            type="range"
+            id="budget"
+            min="10"
+            max="200"
+            value="50"
+            step="5"
+            class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#F5A623]"
+          />
+          <div class="flex justify-between text-xs text-white/50 mt-1">
+            <span>10 €</span>
+            <span>200 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="grid md:grid-cols-3 gap-6 border-t border-white/20 pt-8">
+        <div class="text-center">
+          <p class="text-sm text-white/60 mb-1">Monatlicher Netto-Vorteil je Mitarbeiter</p>
+          <p id="net-benefit" class="text-3xl font-extrabold text-[#F5A623]">50 €</p>
+          <p class="text-xs text-white/50 mt-1">steuerfrei & sozialabgabenfrei</p>
+        </div>
+        <div class="text-center">
+          <p class="text-sm text-white/60 mb-1">Jährliche Ersparnis Arbeitgeber</p>
+          <p id="employer-savings" class="text-3xl font-extrabold text-white">4.200 €</p>
+          <p class="text-xs text-white/50 mt-1">vs. klassische Gehaltserhöhung</p>
+        </div>
+        <div class="text-center">
+          <p class="text-sm text-white/60 mb-1">Gesamter Jahresvorteil</p>
+          <p id="total-benefit" class="text-3xl font-extrabold text-[#4A9B7A]">33.000 €</p>
+          <p class="text-xs text-white/50 mt-1">für dein Unternehmen</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <a href="/demo/" class="btn-primary">
+        Jetzt Demo vereinbaren & mehr sparen
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const employeesSlider = document.getElementById('employees') as HTMLInputElement;
+  const budgetSlider = document.getElementById('budget') as HTMLInputElement;
+  const employeesValue = document.getElementById('employees-value');
+  const budgetValue = document.getElementById('budget-value');
+  const netBenefit = document.getElementById('net-benefit');
+  const employerSavings = document.getElementById('employer-savings');
+  const totalBenefit = document.getElementById('total-benefit');
+
+  function updateCalculator() {
+    const employees = parseInt(employeesSlider?.value || '50');
+    const budget = parseInt(budgetSlider?.value || '50');
+
+    // Calculation logic
+    // Net benefit per employee = budget (tax-free, so full amount)
+    const netPerEmployee = budget;
+    // Employer savings vs. gross salary increase: ~40% savings on social contributions
+    const employerSavingsPerEmployee = Math.round(budget * 0.7 * 12);
+    const totalEmployerSavings = employerSavingsPerEmployee * employees;
+    const totalAnnualBenefit = budget * employees * 12;
+
+    if (employeesValue) employeesValue.textContent = employees.toString();
+    if (budgetValue) budgetValue.textContent = `${budget} €`;
+    if (netBenefit) netBenefit.textContent = `${netPerEmployee} €`;
+    if (employerSavings) employerSavings.textContent = `${totalEmployerSavings.toLocaleString('de-DE')} €`;
+    if (totalBenefit) totalBenefit.textContent = `${totalAnnualBenefit.toLocaleString('de-DE')} €`;
+  }
+
+  employeesSlider?.addEventListener('input', updateCalculator);
+  budgetSlider?.addEventListener('input', updateCalculator);
+  updateCalculator();
+</script>

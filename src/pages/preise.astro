@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FinalCTA from '../components/sections/FinalCTA.astro';
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '4,90 €',
+    priceNote: 'pro Mitarbeiter / Monat',
+    description: 'Für kleine Teams, die mit Benefits starten wollen.',
+    features: [
+      'Bis zu 25 Mitarbeiter',
+      '3 Benefits inklusive',
+      'Admin-Dashboard',
+      'E-Mail Support',
+      'DSGVO-konform',
+    ],
+    cta: 'Jetzt starten',
+    ctaHref: '/demo/',
+    highlighted: false,
+  },
+  {
+    name: 'Professional',
+    price: '7,90 €',
+    priceNote: 'pro Mitarbeiter / Monat',
+    description: 'Für wachsende Unternehmen mit dem vollen Benefits-Erlebnis.',
+    features: [
+      'Unbegrenzte Mitarbeiter',
+      'Alle 15+ Benefits',
+      'Admin-Dashboard & App',
+      'Lohnbuchhaltungs-Integration',
+      'Prioritäts-Support',
+      'Onboarding-Begleitung',
+    ],
+    cta: 'Kostenlose Demo',
+    ctaHref: '/demo/',
+    highlighted: true,
+    badge: 'Beliebteste Wahl',
+  },
+  {
+    name: 'Enterprise',
+    price: 'Auf Anfrage',
+    priceNote: 'individuelles Angebot',
+    description: 'Für Unternehmen mit besonderen Anforderungen.',
+    features: [
+      'Alles aus Professional',
+      'Dedizierter Account Manager',
+      'Custom Integrationen',
+      'SLA-Garantie',
+      'Schulungen & Workshops',
+    ],
+    cta: 'Kontakt aufnehmen',
+    ctaHref: '/demo/',
+    highlighted: false,
+  },
+];
+---
+
+<Layout
+  title="Preise"
+  description="Transparente Preise für steuerfreie Mitarbeiter-Benefits. Starter ab 4,90 € pro Mitarbeiter/Monat. Jetzt kostenlose Demo vereinbaren."
+>
+  <!-- Hero -->
+  <section class="bg-[#FAF9F7] py-20">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <p class="eyebrow">PREISE</p>
+      <h1 class="text-4xl md:text-[56px] font-extrabold text-[#1B1D1E] mt-2 mb-4 leading-tight">
+        Einfache, transparente Preise
+      </h1>
+      <p class="text-lg text-[#1B1D1E]/60 max-w-2xl mx-auto">
+        Kein verstecktes Kleingedrucktes. Kein Jahresvertrag. Nur echte Benefits für dein Team.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="bg-[#F0EDE8] py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="grid md:grid-cols-3 gap-6 items-start">
+        {plans.map((plan) => (
+          <div class={`rounded-2xl p-8 ${plan.highlighted ? 'bg-[#1A6B4A] text-white shadow-2xl scale-105' : 'bg-white'} relative`}>
+            {plan.badge && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#F5A623] text-[#1B1D1E] text-xs font-bold px-4 py-1.5 rounded-full">
+                {plan.badge}
+              </span>
+            )}
+            <h2 class={`text-xl font-bold mb-1 ${plan.highlighted ? 'text-white' : 'text-[#1B1D1E]'}`}>{plan.name}</h2>
+            <p class={`text-sm mb-6 ${plan.highlighted ? 'text-white/70' : 'text-[#1B1D1E]/60'}`}>{plan.description}</p>
+            <div class="mb-6">
+              <span class={`text-4xl font-extrabold ${plan.highlighted ? 'text-white' : 'text-[#1B1D1E]'}`}>{plan.price}</span>
+              <span class={`text-sm ml-1 ${plan.highlighted ? 'text-white/60' : 'text-[#1B1D1E]/50'}`}>{plan.priceNote}</span>
+            </div>
+            <ul class="space-y-3 mb-8">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-2.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" class={`h-5 w-5 flex-shrink-0 mt-0.5 ${plan.highlighted ? 'text-[#4A9B7A]' : 'text-[#1A6B4A]'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class={`text-sm ${plan.highlighted ? 'text-white/80' : 'text-[#1B1D1E]/70'}`}>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={plan.ctaHref}
+              class={plan.highlighted ? 'btn-primary w-full text-center block' : 'btn-secondary w-full text-center block'}
+            >
+              {plan.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Teaser -->
+  <section class="bg-[#FAF9F7] py-16">
+    <div class="container mx-auto px-6 max-w-3xl text-center">
+      <h2 class="text-2xl font-bold text-[#1B1D1E] mb-4">Noch Fragen zu den Preisen?</h2>
+      <p class="text-[#1B1D1E]/60 mb-6">Schau in unsere FAQ oder vereinbare direkt eine kostenlose Demo mit einem unserer Experten.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/ressourcen/faq/" class="btn-secondary">Zur FAQ</a>
+        <a href="/demo/" class="btn-primary">Demo vereinbaren</a>
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA
+    heading="Bereit loszulegen?"
+    subheading="Überzeuge dich selbst. Kostenlose Demo, keine Kreditkarte erforderlich."
+    ctaText="Kostenlose Demo vereinbaren"
+  />
+</Layout>

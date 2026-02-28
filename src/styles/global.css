@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FAF9F7;
+    color: #1B1D1E;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#F5A623] hover:bg-[#C47D0E] text-[#1B1D1E] font-bold py-4 px-8 rounded-lg transition-colors duration-200 inline-block;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-[#1A6B4A] text-[#1A6B4A] hover:bg-[#1A6B4A] hover:text-white font-bold py-4 px-8 rounded-lg transition-colors duration-200 inline-block;
+  }
+
+  .btn-ghost {
+    @apply font-bold text-[#1B1D1E] hover:text-[#1A6B4A] transition-colors duration-200 inline-flex items-center gap-2;
+  }
+
+  .eyebrow {
+    @apply text-xs text-[#4A9B7A] uppercase tracking-widest font-semibold;
+  }
+}

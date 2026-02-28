@@ -1,0 +1,79 @@
+---
+const benefits = [
+  {
+    title: 'Sachbezug',
+    description: 'Bis zu 50 € monatlich steuerfrei',
+    href: '/benefits/sachbezug/',
+    image: '/images/benefit_card_sachbezug.png',
+  },
+  {
+    title: 'Essenszuschuss',
+    description: 'Bis zu 7,50 € täglich steuerfrei',
+    href: '/benefits/essenszuschuss/',
+    image: '/images/benefit_card_essenszuschuss.png',
+  },
+  {
+    title: 'Mobilität',
+    description: 'Bis zu 50 € monatlich steuerfrei',
+    href: '/benefits/mobilitaetsbudget/',
+    image: '/images/benefit_card_mobilitaet.png',
+  },
+  {
+    title: 'Internetzuschuss',
+    description: 'Bis zu 50 € monatlich steuerfrei',
+    href: '/benefits/internetzuschuss/',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>`,
+  },
+  {
+    title: 'KiTa-Zuschuss',
+    description: 'Steuerfrei & sozialabgabenfrei',
+    href: '/benefits/kita-zuschuss/',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
+  },
+  {
+    title: 'Firmenfitness',
+    description: 'Gesundheitsförderung bis 600 €/Jahr',
+    href: '/benefits/firmenfitness/',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
+  },
+];
+---
+
+<section class="bg-[#F0EDE8] py-20">
+  <div class="container mx-auto px-6 max-w-7xl">
+    <div class="text-center mb-12">
+      <p class="eyebrow">BENEFITS-KATALOG</p>
+      <h2 class="text-3xl md:text-[40px] font-bold text-[#1B1D1E] mt-2 leading-tight">
+        Alle Benefits in einer Plattform
+      </h2>
+      <p class="text-[#1B1D1E]/60 mt-4 max-w-2xl mx-auto">
+        Vom Essenszuschuss über das Mobilitätsbudget bis zur Sachbezugskarte. Biete die Vorteile, die dein Team wirklich will.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      {benefits.map((benefit) => (
+        <a
+          href={benefit.href}
+          class="bg-white rounded-2xl p-4 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-200 group"
+        >
+          {benefit.image ? (
+            <img src={benefit.image} alt={benefit.title} class="w-full aspect-square object-cover rounded-xl mb-3" />
+          ) : (
+            <div class="w-full aspect-square bg-[#F0EDE8] rounded-xl mb-3 flex items-center justify-center text-[#1A6B4A] group-hover:bg-[#1A6B4A] group-hover:text-white transition-colors">
+              <Fragment set:html={benefit.icon} />
+            </div>
+          )}
+          <h3 class="text-sm font-bold text-[#1B1D1E] group-hover:text-[#1A6B4A] transition-colors">{benefit.title}</h3>
+          <p class="text-xs text-[#1B1D1E]/50 mt-1 leading-tight">{benefit.description}</p>
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="/benefits/" class="btn-secondary">
+        Alle Benefits entdecken →
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BenefitsOverview from '../../components/sections/BenefitsOverview.astro';
+import FinalCTA from '../../components/sections/FinalCTA.astro';
+---
+
+<Layout
+  title="Gehaltszusätze – Mehr Netto vom Brutto"
+  description="Biete deinen Mitarbeitern steuerfreie Gehaltszusätze mit become.1. Mehr Netto ohne höhere Lohnnebenkosten. Jetzt kostenlose Demo vereinbaren."
+>
+  <!-- Hero -->
+  <section class="bg-[#FAF9F7] py-20">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <p class="eyebrow">LÖSUNGEN</p>
+      <h1 class="text-4xl md:text-[56px] font-extrabold text-[#1B1D1E] mt-2 mb-4 leading-tight">
+        Mehr Netto vom Brutto durch Gehaltszusätze
+      </h1>
+      <p class="text-lg text-[#1B1D1E]/60 max-w-2xl mx-auto">
+        Biete deinen Mitarbeitern steuerfreie Extras, die wirklich ankommen – ohne dass dein Budget oder die Lohnnebenkosten explodieren.
+      </p>
+      <div class="mt-8">
+        <a href="/demo/" class="btn-primary">Kostenlose Demo vereinbaren</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem vs. Solution -->
+  <section class="bg-[#F0EDE8] py-20">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Problem -->
+        <div class="bg-white rounded-2xl p-8 border-l-4 border-red-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+            <h2 class="text-xl font-bold text-[#1B1D1E]">Das Problem: Gehaltserhöhungen verpuffen</h2>
+          </div>
+          <p class="text-[#1B1D1E]/70 leading-relaxed mb-4">
+            Eine klassische Gehaltserhöhung von 100 € brutto führt oft nur zu 50 € netto für den Mitarbeiter, kostet dich als Arbeitgeber aber fast 120 €. Der Effekt ist minimal, die Kosten sind hoch.
+          </p>
+          <div class="bg-red-50 rounded-xl p-4">
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-[#1B1D1E]/60">Arbeitgeberkosten</span>
+              <span class="font-bold text-red-500">~120 €</span>
+            </div>
+            <div class="flex items-center justify-center my-2 text-[#1B1D1E]/30">↓</div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-[#1B1D1E]/60">Brutto-Gehaltserhöhung</span>
+              <span class="font-bold text-[#1B1D1E]">100 €</span>
+            </div>
+            <div class="flex items-center justify-center my-2 text-[#1B1D1E]/30">↓</div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-[#1B1D1E]/60">Netto beim Mitarbeiter</span>
+              <span class="font-bold text-red-500">~50 €</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solution -->
+        <div class="bg-white rounded-2xl p-8 border-l-4 border-[#1A6B4A]">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-[#F0EDE8] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#1A6B4A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h2 class="text-xl font-bold text-[#1B1D1E]">Die Lösung: Steuerfreie Sachbezüge</h2>
+          </div>
+          <p class="text-[#1B1D1E]/70 leading-relaxed mb-4">
+            Mit Benefits wie dem Sachbezug oder Essenszuschuss kommen 50 € steuer- und sozialabgabenfrei beim Mitarbeiter an. Dein Aufwand: 50 €. Der gefühlte Wert: deutlich höher.
+          </p>
+          <div class="bg-[#F0EDE8] rounded-xl p-4">
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-[#1B1D1E]/60">Arbeitgeberkosten</span>
+              <span class="font-bold text-[#1A6B4A]">50 €</span>
+            </div>
+            <div class="flex items-center justify-center my-2 text-[#1B1D1E]/30">↓</div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-[#1B1D1E]/60">Netto beim Mitarbeiter</span>
+              <span class="font-bold text-[#1A6B4A]">50 € ✓</span>
+            </div>
+            <div class="flex items-center justify-center my-2 text-[#1B1D1E]/30">↓</div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-[#1B1D1E]/60">Ersparnis Arbeitgeber</span>
+              <span class="font-bold text-[#1A6B4A]">~42 € / Monat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <BenefitsOverview />
+
+  <FinalCTA
+    heading="Bereit für Gehaltszusätze, die sich lohnen?"
+    subheading="Zeig deinem Team echte Wertschätzung, die ankommt. Wir zeigen dir, wie einfach es geht."
+  />
+</Layout>
