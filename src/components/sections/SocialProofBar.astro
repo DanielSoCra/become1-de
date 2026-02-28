@@ -1,15 +1,15 @@
 ---
+const companies = ['Trade Republic', 'Hypoport', 'Stadler', 'VHP', 'Optik Hallmann', 'Proks'];
 ---
 
 <section class="bg-[#F0EDE8] py-12 overflow-hidden">
   <div class="container mx-auto px-6 max-w-7xl">
-    <p class="text-center text-sm font-semibold text-[#1B1D1E] mb-8 uppercase tracking-wider">
+    <p class="text-center text-sm font-semibold text-[#4A5568] mb-8 uppercase tracking-wider">
       Über 1.000 Unternehmen in Deutschland vertrauen auf become.1
     </p>
-    <div class="flex items-center justify-center flex-wrap gap-x-12 gap-y-6 opacity-60">
-      <!-- Placeholder logos as styled text — replace with actual SVG logos -->
-      {['Trade Republic', 'Hypoport', 'Stadler', 'VHP', 'Optik Hallmann', 'Proks'].map((name) => (
-        <span class="text-lg font-bold text-[#1B1D1E] tracking-tight">{name}</span>
+    <div class="flex items-center justify-center flex-wrap gap-x-12 gap-y-6">
+      {companies.map((name) => (
+        <span class="text-lg font-bold text-[#4A5568] tracking-tight">{name}</span>
       ))}
     </div>
   </div>
